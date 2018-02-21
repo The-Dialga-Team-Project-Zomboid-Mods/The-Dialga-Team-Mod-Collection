@@ -1,0 +1,5 @@
+name=The Dialga Team Skills Cap
+id=TDTModSkillsCap
+description=This mod contains functionality for capping perks and skills.
+poster=poster.png
+require=TDTModAPI,TDTModChatBoxAPI
