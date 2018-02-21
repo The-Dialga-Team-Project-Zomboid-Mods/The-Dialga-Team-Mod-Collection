@@ -1,0 +1,5 @@
+name=The Dialga Team Chat Box API
+id=TDTModChatBoxAPI
+description=This mod contains a custom chat box with API for custom commands.
+poster=poster.png
+require=TDTModAPI
