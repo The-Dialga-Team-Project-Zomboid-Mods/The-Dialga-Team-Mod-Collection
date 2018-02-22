@@ -34,11 +34,9 @@ function CommandHandler:GetCommandParamenters(paramenterTypes)
 	for i = 1, paramenterLength do
 		local paramenterType = paramenterTypes[i];
 		
+		-- Ensures that there is no trailing space :)
+		commandArgs = System.String.Trim(commandArgs);
 		if type(paramenterType) == "string" then
-			
-			-- Ensures that there is no trailing space :)
-			commandArgs = System.String.Trim(commandArgs);
-		
 			if paramenterType == "boolean" then
 				-- true | false | 0 | 1
 				if System.String.StartsWith(commandArgs, "true") then
@@ -57,12 +55,19 @@ function CommandHandler:GetCommandParamenters(paramenterTypes)
 					table.insert(result, nil);
 				end
 			elseif paramenterType == "number" then
-				-- 123 | 1.0 | -123 | -1.0
-				local startIndex, endIndex = commandArgs:find("%-?%d*%.?%d+");
+				-- 4 | 0.4 | 4.57e-3 | 0.3e12 | 5e+20
+				local startIndex, endIndex = commandArgs:find("%-?%d*%.?%d+[Ee]?%+?%-?%d*");
 				
 				if startIndex ~= nil and startIndex == 1 and endIndex ~= nil then
-					table.insert(result, commandArgs:sub(1, endIndex));
-					commandArgs = System.String.Remove(commandArgs, 1, endIndex);
+					if endIndex == #commandArgs then
+						table.insert(result, tonumber(commandArgs));
+						commandArgs = "";
+					elseif commandArgs:sub(endIndex + 1, endIndex + 1) == " " then
+						table.insert(result, tonumber(commandArgs:sub(1, endIndex)));
+						commandArgs = System.String.Remove(commandArgs, 1, endIndex);
+					else
+						table.insert(result, nil);
+					end
 				else
 					table.insert(result, nil);
 				end
@@ -80,6 +85,8 @@ function CommandHandler:GetCommandParamenters(paramenterTypes)
 					table.insert(result, nil);
 				end
 			end
+		elseif type(paramenterType) == "function" then
+			commandArgs = paramenterType(commandArgs);
 		else
 			return nil;
 		end
