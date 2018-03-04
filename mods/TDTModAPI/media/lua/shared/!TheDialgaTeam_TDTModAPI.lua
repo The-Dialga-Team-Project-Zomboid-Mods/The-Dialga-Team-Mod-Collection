@@ -5,7 +5,7 @@ TheDialgaTeam = TheDialgaTeam or {};
 -- ######################################################################################
 
 if type(TheDialgaTeam.TDTModAPI) ~= "table" then
-	TheDialgaTeam.TDTModAPI = {};
+    TheDialgaTeam.TDTModAPI = {};
 end
 
 TheDialgaTeam.TDTModAPI.Event = require "TheDialgaTeam/TDTModAPI/Event";
