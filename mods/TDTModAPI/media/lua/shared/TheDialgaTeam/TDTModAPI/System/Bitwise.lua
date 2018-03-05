@@ -91,6 +91,218 @@ function TDTModAPI_System_Bitwise.Not(binaryTable)
     return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits);
 end
 
+--- Bitwise operation AND (&)
+--- @overload fun(binaryTable:number, binaryTable2:number):number
+--- @overload fun(binaryTable:number, binaryTable2:table):number
+--- @overload fun(binaryTable:table, binaryTable2:number):number
+--- @param binaryTable table Binary bits in table representation.
+--- @param binaryTable2 table Binary bits in table representation.
+--- @return number Numeric value of the binary bits representation.
+function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
+    if binaryTable == nil then
+        error "ArgumentNullException: binaryTable is null.";
+    elseif binaryTable2 == nil then
+        error "ArgumentNullException: binaryTable2 is null.";
+    elseif type(binaryTable) ~= "table" and type(binaryTable) ~= "number" then
+        error "ArgumentException: binaryTable is not a table or a number.";
+    elseif type(binaryTable2) ~= "table" and type(binaryTable2) ~= "number" then
+        error "ArgumentException: binaryTable2 is not a table or a number.";
+    elseif type(binaryTable) == "table" then
+        if binaryTable.type == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.type) ~= "string" then
+            error "ArgumentException: binaryTable.type is not a string.";
+        elseif binaryTable.minValue == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.minValue) ~= "number" then
+            error "ArgumentException: binaryTable.minValue is not a number.";
+        elseif binaryTable.maxValue == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.maxValue) ~= "number" then
+            error "ArgumentException: binaryTable.maxValue is not a number.";
+        elseif binaryTable.bits == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.bits) ~= "number" then
+            error "ArgumentException: binaryTable.bits is not a number.";
+        elseif binaryTable.hasNegativeBits == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.hasNegativeBits) ~= "boolean" then
+            error "ArgumentException: binaryTable.hasNegativeBits is not a boolean.";
+        elseif binaryTable.value == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.value) ~= "table" then
+            error "ArgumentException: binaryTable.value is not a table.";
+        end
+    elseif type(binaryTable2) == "table" then
+        if binaryTable2.type == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.type) ~= "string" then
+            error "ArgumentException: binaryTable2.type is not a string.";
+        elseif binaryTable2.minValue == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.minValue) ~= "number" then
+            error "ArgumentException: binaryTable2.minValue is not a number.";
+        elseif binaryTable2.maxValue == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.maxValue) ~= "number" then
+            error "ArgumentException: binaryTable2.maxValue is not a number.";
+        elseif binaryTable2.bits == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.bits) ~= "number" then
+            error "ArgumentException: binaryTable2.bits is not a number.";
+        elseif binaryTable2.hasNegativeBits == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.hasNegativeBits) ~= "boolean" then
+            error "ArgumentException: binaryTable2.hasNegativeBits is not a boolean.";
+        elseif binaryTable2.value == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.value) ~= "table" then
+            error "ArgumentException: binaryTable2.value is not a table.";
+        end
+    end
+
+    local binaryBits = {};
+    local binaryBits2 = {};
+
+    if type(binaryTable) == "table" then
+        binaryBits = binaryTable;
+    else
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+    end
+
+    if type(binaryTable2) == "table" then
+        binaryBits2 = binaryTable2;
+    else
+        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable2);
+    end
+
+    local index = 1;
+    local maxIndex = #binaryBits.value;
+    local binaryBits3 = TDTModAPI_System_Bitwise.ResolveBestBinaryType(binaryBits, binaryBits2);
+
+    if #binaryBits2.value <= maxIndex then
+        maxIndex = #binaryBits2.value;
+    end
+
+    while index <= maxIndex do
+        if binaryBits.value[index] ~= nil and binaryBits.value[index] == 1 and binaryBits2.value[index] ~= nil and binaryBits2.value[index] == 1 then
+            binaryBits3.value[index] = 1;
+        else
+            binaryBits3.value[index] = 0;
+        end
+
+        index = index + 1;
+    end
+
+    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits3);
+end
+
+--- Bitwise operation OR (|)
+--- @overload fun(binaryTable:number, binaryTable2:number):number
+--- @overload fun(binaryTable:number, binaryTable2:table):number
+--- @overload fun(binaryTable:table, binaryTable2:number):number
+--- @param binaryTable table Binary bits in table representation.
+--- @param binaryTable2 table Binary bits in table representation.
+--- @return number Numeric value of the binary bits representation.
+function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
+    if binaryTable == nil then
+        error "ArgumentNullException: binaryTable is null.";
+    elseif binaryTable2 == nil then
+        error "ArgumentNullException: binaryTable2 is null.";
+    elseif type(binaryTable) ~= "table" and type(binaryTable) ~= "number" then
+        error "ArgumentException: binaryTable is not a table or a number.";
+    elseif type(binaryTable2) ~= "table" and type(binaryTable2) ~= "number" then
+        error "ArgumentException: binaryTable2 is not a table or a number.";
+    elseif type(binaryTable) == "table" then
+        if binaryTable.type == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.type) ~= "string" then
+            error "ArgumentException: binaryTable.type is not a string.";
+        elseif binaryTable.minValue == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.minValue) ~= "number" then
+            error "ArgumentException: binaryTable.minValue is not a number.";
+        elseif binaryTable.maxValue == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.maxValue) ~= "number" then
+            error "ArgumentException: binaryTable.maxValue is not a number.";
+        elseif binaryTable.bits == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.bits) ~= "number" then
+            error "ArgumentException: binaryTable.bits is not a number.";
+        elseif binaryTable.hasNegativeBits == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.hasNegativeBits) ~= "boolean" then
+            error "ArgumentException: binaryTable.hasNegativeBits is not a boolean.";
+        elseif binaryTable.value == nil then
+            error "ArgumentException: binaryTable is not a valid table.";
+        elseif type(binaryTable.value) ~= "table" then
+            error "ArgumentException: binaryTable.value is not a table.";
+        end
+    elseif type(binaryTable2) == "table" then
+        if binaryTable2.type == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.type) ~= "string" then
+            error "ArgumentException: binaryTable2.type is not a string.";
+        elseif binaryTable2.minValue == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.minValue) ~= "number" then
+            error "ArgumentException: binaryTable2.minValue is not a number.";
+        elseif binaryTable2.maxValue == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.maxValue) ~= "number" then
+            error "ArgumentException: binaryTable2.maxValue is not a number.";
+        elseif binaryTable2.bits == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.bits) ~= "number" then
+            error "ArgumentException: binaryTable2.bits is not a number.";
+        elseif binaryTable2.hasNegativeBits == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.hasNegativeBits) ~= "boolean" then
+            error "ArgumentException: binaryTable2.hasNegativeBits is not a boolean.";
+        elseif binaryTable2.value == nil then
+            error "ArgumentException: binaryTable2 is not a valid table.";
+        elseif type(binaryTable2.value) ~= "table" then
+            error "ArgumentException: binaryTable2.value is not a table.";
+        end
+    end
+
+    local binaryBits = {};
+    local binaryBits2 = {};
+
+    if type(binaryTable) == "table" then
+        binaryBits = binaryTable;
+    else
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+    end
+
+    if type(binaryTable2) == "table" then
+        binaryBits2 = binaryTable2;
+    else
+        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable2);
+    end
+
+    local index = 1;
+    local maxIndex = #binaryBits.value;
+    local binaryBits3 = TDTModAPI_System_Bitwise.ResolveBestBinaryType(binaryBits, binaryBits2);
+
+    if #binaryBits2.value >= maxIndex then
+        maxIndex = #binaryBits2.value;
+    end
+
+    while index <= maxIndex do
+        if (binaryBits.value[index] ~= nil and binaryBits.value[index] == 1) or (binaryBits2.value[index] ~= nil and binaryBits2.value[index] == 1) then
+            binaryBits3.value[index] = 1;
+        else
+            binaryBits3.value[index] = 0;
+        end
+
+        index = index + 1;
+    end
+
+    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits3);
+end
+
 --- Convert value into binary bits representation.
 --- @overload fun(value:number):table
 --- @param value number Value to convert into binary bits.
@@ -104,9 +316,11 @@ function TDTModAPI_System_Bitwise.ConvertToBinaryBits(value, valueType)
     elseif string.find(value, "%d+%.%d+") ~= nil then
         error "ArgumentException: value is not of a valid type.";
     elseif valueType ~= nil and type(valueType) ~= "table" then
-        error "ArgumentException: type is not a table.";
+        error "ArgumentException: valueType is not a table.";
     elseif valueType ~= nil and valueType ~= TDTModAPI_System_Bitwise.Types.bool and valueType ~= TDTModAPI_System_Bitwise.Types.byte and valueType ~= TDTModAPI_System_Bitwise.Types.sbyte and valueType ~= TDTModAPI_System_Bitwise.Types.short and valueType ~= TDTModAPI_System_Bitwise.Types.ushort and valueType ~= TDTModAPI_System_Bitwise.Types.int and valueType ~= TDTModAPI_System_Bitwise.Types.uint and valueType ~= TDTModAPI_System_Bitwise.Types.long and valueType ~= TDTModAPI_System_Bitwise.Types.ulong then
-        error "ArgumentException: type is not of a valid type.";
+        error "ArgumentException: valueType is not of a valid type.";
+    elseif valueType ~= nil and (value < valueType.minValue or value > valueType.maxValue) then
+        error("OverflowException: value is not within the range of " .. valueType.minValue .. " to " .. valueType.maxValue .. ".");
     end
 
     local targetType = valueType;
@@ -377,6 +591,108 @@ function TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryTable)
     else
         return result;
     end
+end
+
+--- Get the biggest binary type from two binary values.
+--- @param binaryTable table Binary bits in table representation.
+--- @param binaryTable2 table Binary bits in table representation.
+--- @return table Binary type table.
+function TDTModAPI_System_Bitwise.ResolveBestBinaryType(binaryTable, binaryTable2)
+    if binaryTable == nil then
+        error "ArgumentNullException: binaryTable is null.";
+    elseif type(binaryTable) ~= "table" then
+        error "ArgumentException: binaryTable is not a table.";
+    elseif binaryTable.type == nil then
+        error "ArgumentException: binaryTable is not a valid table.";
+    elseif type(binaryTable.type) ~= "string" then
+        error "ArgumentException: binaryTable.type is not a string.";
+    elseif binaryTable.minValue == nil then
+        error "ArgumentException: binaryTable is not a valid table.";
+    elseif type(binaryTable.minValue) ~= "number" then
+        error "ArgumentException: binaryTable.minValue is not a number.";
+    elseif binaryTable.maxValue == nil then
+        error "ArgumentException: binaryTable is not a valid table.";
+    elseif type(binaryTable.maxValue) ~= "number" then
+        error "ArgumentException: binaryTable.maxValue is not a number.";
+    elseif binaryTable.bits == nil then
+        error "ArgumentException: binaryTable is not a valid table.";
+    elseif type(binaryTable.bits) ~= "number" then
+        error "ArgumentException: binaryTable.bits is not a number.";
+    elseif binaryTable.hasNegativeBits == nil then
+        error "ArgumentException: binaryTable is not a valid table.";
+    elseif type(binaryTable.hasNegativeBits) ~= "boolean" then
+        error "ArgumentException: binaryTable.hasNegativeBits is not a boolean.";
+    elseif binaryTable.value == nil then
+        error "ArgumentException: binaryTable is not a valid table.";
+    elseif type(binaryTable.value) ~= "table" then
+        error "ArgumentException: binaryTable.value is not a table.";
+    end
+
+    if binaryTable2 == nil then
+        error "ArgumentNullException: binaryTable2 is null.";
+    elseif type(binaryTable2) ~= "table" then
+        error "ArgumentException: binaryTable2 is not a table.";
+    elseif binaryTable2.type == nil then
+        error "ArgumentException: binaryTable2 is not a valid table.";
+    elseif type(binaryTable2.type) ~= "string" then
+        error "ArgumentException: binaryTable2.type is not a string.";
+    elseif binaryTable2.minValue == nil then
+        error "ArgumentException: binaryTable2 is not a valid table.";
+    elseif type(binaryTable2.minValue) ~= "number" then
+        error "ArgumentException: binaryTable2.minValue is not a number.";
+    elseif binaryTable2.maxValue == nil then
+        error "ArgumentException: binaryTable2 is not a valid table.";
+    elseif type(binaryTable2.maxValue) ~= "number" then
+        error "ArgumentException: binaryTable2.maxValue is not a number.";
+    elseif binaryTable2.bits == nil then
+        error "ArgumentException: binaryTable2 is not a valid table.";
+    elseif type(binaryTable2.bits) ~= "number" then
+        error "ArgumentException: binaryTable2.bits is not a number.";
+    elseif binaryTable2.hasNegativeBits == nil then
+        error "ArgumentException: binaryTable2 is not a valid table.";
+    elseif type(binaryTable2.hasNegativeBits) ~= "boolean" then
+        error "ArgumentException: binaryTable2.hasNegativeBits is not a boolean.";
+    elseif binaryTable2.value == nil then
+        error "ArgumentException: binaryTable2 is not a valid table.";
+    elseif type(binaryTable2.value) ~= "table" then
+        error "ArgumentException: binaryTable2.value is not a table.";
+    end
+
+    if binaryTable.hasNegativeBits or binaryTable2.hasNegativeBits then
+        -- long, int, short, sbyte
+        if binaryTable.type == "long" or binaryTable2.type == "long" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.long);
+        elseif binaryTable.type == "int" or binaryTable2.type == "int" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.int);
+        elseif binaryTable.type == "short" or binaryTable2.type == "short" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.short);
+        elseif binaryTable.type == "sbyte" or binaryTable2.type == "sbyte" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.sbyte);
+        end
+    else
+        -- ulong, long, uint, int, ushort, short, sbyte, byte, bool
+        if binaryTable.type == "ulong" or binaryTable2.type == "ulong" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.ulong);
+        elseif binaryTable.type == "long" or binaryTable2.type == "long" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.long);
+        elseif binaryTable.type == "uint" or binaryTable2.type == "uint" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.uint);
+        elseif binaryTable.type == "int" or binaryTable2.type == "int" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.int);
+        elseif binaryTable.type == "ushort" or binaryTable2.type == "ushort" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.ushort);
+        elseif binaryTable.type == "short" or binaryTable2.type == "short" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.short);
+        elseif binaryTable.type == "sbyte" or binaryTable2.type == "sbyte" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.sbyte);
+        elseif binaryTable.type == "byte" or binaryTable2.type == "byte" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.byte);
+        elseif binaryTable.type == "bool" or binaryTable2.type == "bool" then
+            return Table.Copy(TDTModAPI_System_Bitwise.Types.bool);
+        end
+    end
+
+    return nil;
 end
 
 return TDTModAPI_System_Bitwise;
