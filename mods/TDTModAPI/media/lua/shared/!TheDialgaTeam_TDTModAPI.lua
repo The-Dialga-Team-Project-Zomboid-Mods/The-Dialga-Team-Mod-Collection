@@ -10,6 +10,7 @@ end
 
 TheDialgaTeam.TDTModAPI.Event = require "TheDialgaTeam/TDTModAPI/Event";
 TheDialgaTeam.TDTModAPI.Json = require "TheDialgaTeam/TDTModAPI/Json";
+TheDialgaTeam.TDTModAPI.Lua = require "TheDialgaTeam/TDTModAPI/Lua";
 TheDialgaTeam.TDTModAPI.PZ = require "TheDialgaTeam/TDTModAPI/PZ";
 TheDialgaTeam.TDTModAPI.System = require "TheDialgaTeam/TDTModAPI/System";
 
