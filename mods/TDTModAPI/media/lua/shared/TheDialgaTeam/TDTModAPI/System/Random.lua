@@ -1,31 +1,33 @@
 local TDTModAPI_System_Random = {};
 
--- TheDialgaTeam.System.Random.Next(minValue)
--- TheDialgaTeam.System.Random.Next(minValue, maxValue)
-function TDTModAPI_System_Random.Next(...)
-	local args = {...}
-	
-	if #args == 1 then
-		return ZombRand(select(1, ...))
-	elseif #args == 2 then
-		return ZombRand(select(1, ...), select(2, ...))
-	else
-		return nil
-	end
-end
+--- Returns a random integer that is within a specified range.
+--- @overload fun():number
+--- @overload fun(maxValue:number):number
+--- @param minValue number The inclusive lower bound of the random number returned.
+--- @param maxValue number The exclusive upper bound of the random number returned.
+--- @return number A number that is greater than or equal to minValue and less than maxValue.
+function TDTModAPI_System_Random.Next(minValue, maxValue)
+    if minValue ~= nil and type(minValue) ~= "number" then
+        error "ArgumentException: minValue is not a number.";
+    elseif maxValue ~= nil and type(maxValue) ~= "number" then
+        error "ArgumentException: maxValue is not a number.";
+    end
 
--- TheDialgaTeam.System.Random.NextInclusive(minValue)
--- TheDialgaTeam.System.Random.NextInclusive(minValue, maxValue)
-function TDTModAPI_System_Random.NextInclusive(...)
-	local args = {...}
-	
-	if #args == 1 then
-		return ZombRand(select(1, ...) + 1)
-	elseif #args == 2 then
-		return ZombRand(select(1, ...), select(2, ...) + 1)
-	else
-		return nil
-	end
+    local targetMinValue = 0;
+    local targetMaxValue = 0;
+
+    if minValue == nil and maxValue == nil then
+        targetMinValue = 0;
+        targetMaxValue = 2147483648;
+    elseif minValue ~= nil and maxValue == nil then
+        targetMinValue = 0;
+        targetMaxValue = minValue;
+    else
+        targetMinValue = minValue;
+        targetMaxValue = maxValue;
+    end
+
+    return ZombRand(targetMinValue, targetMaxValue);
 end
 
 return TDTModAPI_System_Random;

@@ -1,6 +1,7 @@
 local TDTModAPI_System = {};
 
 -- Import Packages
+TDTModAPI_System.Bitwise = require "TheDialgaTeam/TDTModAPI/System/Bitwise";
 TDTModAPI_System.IO = require "TheDialgaTeam/TDTModAPI/System/IO";
 TDTModAPI_System.Math = require "TheDialgaTeam/TDTModAPI/System/Math";
 TDTModAPI_System.Random = require "TheDialgaTeam/TDTModAPI/System/Random";

@@ -1,16 +1,23 @@
 local TDTModAPI_Json = {}
 local instance = require "TheDialgaTeam/TDTModAPI/Json/Plugin";
 
-function TDTModAPI_Json.Encode(lua_table)
-	return instance:encode(lua_table);
+--- Serialize Json object.
+--- @overload fun(table:table):string
+--- @param table table Table to serialize.
+--- @return string String containing the json object.
+function TDTModAPI_Json.Serialize(table, pretty)
+    if pretty or false then
+        return instance:encode(table);
+    else
+        return instance:encode_pretty(table);
+    end
 end
 
-function TDTModAPI_Json.EncodePretty(lua_table)
-	return instance:encode_pretty(lua_table);
-end
-
-function TDTModAPI_Json.Decode(text)
-	return instance:decode(text);
+--- Deserialize Json object.
+--- @param text string String to deserialize.
+--- @return table Table containing the json object.
+function TDTModAPI_Json.Deserialize(text)
+    return instance:decode(text);
 end
 
 return TDTModAPI_Json;

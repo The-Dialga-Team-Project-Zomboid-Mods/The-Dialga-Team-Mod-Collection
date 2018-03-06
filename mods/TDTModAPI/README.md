@@ -10,10 +10,16 @@ This mod do not have requirements.
 1. TheDialgaTeam.TDTModAPI.Event.Add(eventTable, lua_function);
 2. TheDialgaTeam.TDTModAPI.Event.Remove(eventTable, lua_function);
 
-#### TheDialgaTeam.TDTModAPI.Lua.Table
+#### TheDialgaTeam.TDTModAPI.Json
+1. TheDialgaTeam.TDTModAPI.Json.Serialize(table, pretty);
+2. TheDialgaTeam.TDTModAPI.Json.Deserialize(text);
+
+#### TheDialgaTeam.TDTModAPI.Lua
+##### TheDialgaTeam.TDTModAPI.Lua.Table
 1. TheDialgaTeam.TDTModAPI.Lua.Table.Copy(table);
 
-#### TheDialgaTeam.TDTModAPI.System.Bitwise
+#### TheDialgaTeam.TDTModAPI.System
+##### TheDialgaTeam.TDTModAPI.System.Bitwise
 1. TheDialgaTeam.TDTModAPI.System.Bitwise.Types;
 2. TheDialgaTeam.TDTModAPI.System.Bitwise.Not(binaryTable);
 3. TheDialgaTeam.TDTModAPI.System.Bitwise.And(binaryTable, binaryTable2);
@@ -21,9 +27,12 @@ This mod do not have requirements.
 5. TheDialgaTeam.TDTModAPI.System.Bitwise.Xor(binaryTable, binaryTable2);
 6. TheDialgaTeam.TDTModAPI.System.Bitwise.LShift(binaryTable, value);
 7. TheDialgaTeam.TDTModAPI.System.Bitwise.RShift(binaryTable, value);
-8. TheDialgaTeam.TDTModAPI.System.Bitwise.ConvertToBinaryBits(value, valueType);
+8. TheDialgaTeam.TDTModAPI.System.Bitwise.ConvertToBinaryTable(value, valueType);
 9. TheDialgaTeam.TDTModAPI.System.Bitwise.TrimPaddedZeros(binaryTable);
-10. TheDialgaTeam.TDTModAPI.System.Bitwise.ConvertToBinaryValue(binaryTable);
+10. TheDialgaTeam.TDTModAPI.System.Bitwise.ConvertToNumericValue(binaryTable);
+
+##### TheDialgaTeam.TDTModAPI.System.Random
+1. TheDialgaTeam.TDTModAPI.System.Random.Next(minValue, maxValue);
 
 # Credits & Disclaimer
 This mod is made by jianmingyong (The Dialga Team owner).
