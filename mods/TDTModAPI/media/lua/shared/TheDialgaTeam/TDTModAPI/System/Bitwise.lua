@@ -52,7 +52,7 @@ function TDTModAPI_System_Bitwise.Not(binaryTable)
     if type(binaryTable) == "table" then
         binaryBits = Table.Copy(binaryTable);
     else
-        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable);
     end
 
     local index = 1;
@@ -67,7 +67,7 @@ function TDTModAPI_System_Bitwise.Not(binaryTable)
         index = index + 1;
     end
 
-    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits);
+    return TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryBits);
 end
 
 --- Bitwise operation AND (&)
@@ -102,13 +102,13 @@ function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
     if type(binaryTable) == "table" then
         binaryBits = binaryTable;
     else
-        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable);
     end
 
     if type(binaryTable2) == "table" then
         binaryBits2 = binaryTable2;
     else
-        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable2);
+        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable2);
     end
 
     local index = 1;
@@ -129,7 +129,7 @@ function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
         index = index + 1;
     end
 
-    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits3);
+    return TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryBits3);
 end
 
 --- Bitwise operation OR (|)
@@ -164,13 +164,13 @@ function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
     if type(binaryTable) == "table" then
         binaryBits = binaryTable;
     else
-        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable);
     end
 
     if type(binaryTable2) == "table" then
         binaryBits2 = binaryTable2;
     else
-        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable2);
+        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable2);
     end
 
     local index = 1;
@@ -191,7 +191,7 @@ function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
         index = index + 1;
     end
 
-    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits3);
+    return TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryBits3);
 end
 
 --- Bitwise operation XOR (^)
@@ -226,13 +226,13 @@ function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
     if type(binaryTable) == "table" then
         binaryBits = binaryTable;
     else
-        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable);
     end
 
     if type(binaryTable2) == "table" then
         binaryBits2 = binaryTable2;
     else
-        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable2);
+        binaryBits2 = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable2);
     end
 
     local index = 1;
@@ -254,7 +254,7 @@ function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
         index = index + 1;
     end
 
-    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits3);
+    return TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryBits3);
 end
 
 --- Bitwise operation LShift (<<)
@@ -279,7 +279,7 @@ function TDTModAPI_System_Bitwise.LShift(binaryTable, value)
     if type(binaryTable) == "table" then
         binaryBits = Table.Copy(binaryTable);
     else
-        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable);
     end
 
     for i = 1, value do
@@ -292,7 +292,7 @@ function TDTModAPI_System_Bitwise.LShift(binaryTable, value)
         end
     end
 
-    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits);
+    return TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryBits);
 end
 
 --- Bitwise operation RShift (>>)
@@ -317,7 +317,7 @@ function TDTModAPI_System_Bitwise.RShift(binaryTable, value)
     if type(binaryTable) == "table" then
         binaryBits = Table.Copy(binaryTable);
     else
-        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryBits(binaryTable);
+        binaryBits = TDTModAPI_System_Bitwise.ConvertToBinaryTable(binaryTable);
     end
 
     local isNegative = false;
@@ -340,7 +340,7 @@ function TDTModAPI_System_Bitwise.RShift(binaryTable, value)
         end
     end
 
-    return TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryBits);
+    return TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryBits);
 end
 
 --- Convert value into binary bits representation.
@@ -348,7 +348,7 @@ end
 --- @param value number Value to convert into binary bits.
 --- @param valueType table Type of binary bits to convert into.
 --- @return table Binary bits in table representation.
-function TDTModAPI_System_Bitwise.ConvertToBinaryBits(value, valueType)
+function TDTModAPI_System_Bitwise.ConvertToBinaryTable(value, valueType)
     TDTModAPI_System_Bitwise_Internal.AssertIntegerValue(value);
     TDTModAPI_System_Bitwise_Internal.AssertBitwiseType(valueType, true);
 
@@ -472,7 +472,7 @@ end
 --- Convert binary bits into numeric representation.
 --- @param binaryTable table Binary bits in table representation.
 --- @return number Binary bits into numeric representation.
-function TDTModAPI_System_Bitwise.ConvertToBinaryValue(binaryTable)
+function TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryTable)
     TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable);
 
     local isNegative = false;
@@ -673,8 +673,5 @@ function TDTModAPI_System_Bitwise_Internal.AssertBitwiseType(valueType, acceptNu
         error "ArgumentException: valueType is not of a valid type.";
     end
 end
-
-local test = TDTModAPI_System_Bitwise.RShift(155, 1);
-local test2 = "";
 
 return TDTModAPI_System_Bitwise;
