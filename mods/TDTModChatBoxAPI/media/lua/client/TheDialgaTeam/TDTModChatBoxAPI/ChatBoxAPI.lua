@@ -22,8 +22,8 @@ TDTModChatBox.Settings = {};
 
 function TDTModChatBox:new()
 	local o = ISCollapsableWindow:new(0, 0, 0, 0);
-	setmetatable(o, self)
-	self.__index = self
+	setmetatable(o, self);
+	self.__index = self;
 	
 	o.width = 500;
 	o.height = o.titleBarHeight() + 200 + getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 10 + 2 + o.resizeWidgetHeight();
@@ -202,7 +202,7 @@ function TDTModChatBox:InitializeInputField()
 					-- commandPrefixOutput (string) [optional] = "";
 					-- isCommandConsumed (boolean) [optional] = false;
 					if type(result.isCommand) == "boolean" and result.isCommand and type(result.commandOutput) == "string" then
-						local prefix = nil;
+						local prefix;
 						
 						if type(result.commandPrefixOutput) == "string" then
 							prefix = result.commandPrefixOutput;

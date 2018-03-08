@@ -46,7 +46,7 @@ function TDTModChatBox.InitializeServer()
 end
 
 function TDTModChatBox.LoadSettings()
-	TDTModChatBox.Settings = Json.Decode(File.LoadFile("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json"));
+	TDTModChatBox.Settings = Json.Deserialize(File.LoadFile("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json"));
 	
 	if type(TDTModChatBox.Settings) ~= "table" then
 		TDTModChatBox.Settings = {};
@@ -94,7 +94,7 @@ function TDTModChatBox.LoadSettings()
 		TDTModChatBox.Settings.Users.Character = {};
 	end
 	
-	File.SaveFile("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json", Json.EncodePretty(TDTModChatBox.Settings));
+	File.SaveFile("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json", Json.Serialize(TDTModChatBox.Settings));
 end
 
 Events.OnGameBoot.Add(TDTModChatBox.OnGameBoot);

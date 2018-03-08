@@ -1,15 +1,27 @@
-local TDTModAPI_Json = {}
-local instance = require "TheDialgaTeam/TDTModAPI/Json/Plugin";
+local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
+local Json = require "TheDialgaTeam/TDTModAPI/Json/Plugin";
+local TDTModAPI_Json = {};
 
 --- Serialize Json object.
 --- @overload fun(table:table):string
---- @param table table Table to serialize.
+--- @param jsonTable table Table to serialize.
+--- @param isPretty boolean Makes the json output pretty.
 --- @return string String containing the json object.
-function TDTModAPI_Json.Serialize(table, pretty)
-    if pretty or false then
-        return instance:encode(table);
+function TDTModAPI_Json.Serialize(jsonTable, isPretty)
+    local status, error = pcall(function ()
+        Assert.AssertTable(jsonTable, "jsonTable");
+        Assert.AssertBoolean(isPretty, "pretty", true);
+    end);
+
+    if status then
+        if isPretty or false then
+            return Json:encode(jsonTable);
+        else
+            return Json:encode_pretty(jsonTable);
+        end
     else
-        return instance:encode_pretty(table);
+        print(error);
+        return nil;
     end
 end
 
@@ -17,7 +29,16 @@ end
 --- @param text string String to deserialize.
 --- @return table Table containing the json object.
 function TDTModAPI_Json.Deserialize(text)
-    return instance:decode(text);
+    local status, error = pcall(function ()
+        Assert.AssertString(text, "text");
+    end);
+
+    if status then
+        return Json:decode(text);
+    else
+        print(error);
+        return nil;
+    end
 end
 
 return TDTModAPI_Json;

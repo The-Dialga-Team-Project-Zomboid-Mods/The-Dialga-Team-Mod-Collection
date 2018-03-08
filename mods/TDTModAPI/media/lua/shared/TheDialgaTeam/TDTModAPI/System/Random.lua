@@ -1,3 +1,4 @@
+local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
 local TDTModAPI_System_Random = {};
 
 --- Returns a random integer that is within a specified range.
@@ -7,27 +8,31 @@ local TDTModAPI_System_Random = {};
 --- @param maxValue number The exclusive upper bound of the random number returned.
 --- @return number A number that is greater than or equal to minValue and less than maxValue.
 function TDTModAPI_System_Random.Next(minValue, maxValue)
-    if minValue ~= nil and type(minValue) ~= "number" then
-        error "ArgumentException: minValue is not a number.";
-    elseif maxValue ~= nil and type(maxValue) ~= "number" then
-        error "ArgumentException: maxValue is not a number.";
-    end
+    local status, error = pcall(function ()
+        Assert.AssertNumber(minValue, "minValue", true);
+        Assert.AssertNumber(maxValue, "maxValue", true);
+    end);
 
-    local targetMinValue = 0;
-    local targetMaxValue = 0;
+    if status then
+        local targetMinValue = 0;
+        local targetMaxValue = 0;
 
-    if minValue == nil and maxValue == nil then
-        targetMinValue = 0;
-        targetMaxValue = 2147483648;
-    elseif minValue ~= nil and maxValue == nil then
-        targetMinValue = 0;
-        targetMaxValue = minValue;
+        if minValue == nil and maxValue == nil then
+            targetMinValue = 0;
+            targetMaxValue = 2147483648;
+        elseif minValue ~= nil and maxValue == nil then
+            targetMinValue = 0;
+            targetMaxValue = minValue;
+        else
+            targetMinValue = minValue;
+            targetMaxValue = maxValue;
+        end
+
+        return ZombRand(targetMinValue, targetMaxValue);
     else
-        targetMinValue = minValue;
-        targetMaxValue = maxValue;
+        print(error);
+        return nil;
     end
-
-    return ZombRand(targetMinValue, targetMaxValue);
 end
 
 return TDTModAPI_System_Random;

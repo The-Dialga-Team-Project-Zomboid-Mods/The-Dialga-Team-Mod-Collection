@@ -7,16 +7,32 @@ This mod do not have requirements.
 
 # Exposed Functions
 #### TheDialgaTeam.TDTModAPI.Event
-1. TheDialgaTeam.TDTModAPI.Event.Add(eventTable, lua_function);
-2. TheDialgaTeam.TDTModAPI.Event.Remove(eventTable, lua_function);
+1. TheDialgaTeam.TDTModAPI.Event.Add(eventTable, luaFunction);
+2. TheDialgaTeam.TDTModAPI.Event.Remove(eventTable, luaFunction);
 
 #### TheDialgaTeam.TDTModAPI.Json
-1. TheDialgaTeam.TDTModAPI.Json.Serialize(table, pretty);
+1. TheDialgaTeam.TDTModAPI.Json.Serialize(jsonTable, isPretty);
 2. TheDialgaTeam.TDTModAPI.Json.Deserialize(text);
 
 #### TheDialgaTeam.TDTModAPI.Lua
+##### TheDialgaTeam.TDTModAPI.Lua.Assert
+1. TheDialgaTeam.TDTModAPI.Lua.Assert.AssertBoolean(value, name, acceptNull);
+2. TheDialgaTeam.TDTModAPI.Lua.Assert.AssertNumber(value, name, acceptNull);
+3. TheDialgaTeam.TDTModAPI.Lua.Assert.AssertString(value, name, acceptNull);
+4. TheDialgaTeam.TDTModAPI.Lua.Assert.AssertFunction(value, name, acceptNull);
+5. TheDialgaTeam.TDTModAPI.Lua.Assert.AssertTable(value, name, acceptNull);
+
 ##### TheDialgaTeam.TDTModAPI.Lua.Table
 1. TheDialgaTeam.TDTModAPI.Lua.Table.Copy(table);
+
+#### TheDialgaTeam.TDTModAPI.PZ
+##### TheDialgaTeam.TDTModAPI.PZ.Color
+1. TheDialgaTeam.TDTModAPI.PZ.Color.ConvertToRGB(colorTable);
+2. TheDialgaTeam.TDTModAPI.PZ.Color.ConvertToRGBA(colorTable);
+3. TheDialgaTeam.TDTModAPI.PZ.Color.ConvertToPZRGB(colorTable);
+4. TheDialgaTeam.TDTModAPI.PZ.Color.ConvertToPZRichTextRGB(colorTable);
+5. TheDialgaTeam.TDTModAPI.PZ.Color.ConvertToPZRGBA(colorTable);
+6. TheDialgaTeam.TDTModAPI.PZ.Color.ConvertToPZColorInfo(colorTable);
 
 #### TheDialgaTeam.TDTModAPI.System
 ##### TheDialgaTeam.TDTModAPI.System.Bitwise
