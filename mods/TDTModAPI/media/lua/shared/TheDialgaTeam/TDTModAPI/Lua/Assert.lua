@@ -14,7 +14,7 @@ function TDTModAPI_Lua_Assert.AssertBoolean(value, name, acceptNull)
 
     if (not (acceptNull or true)) and value == nil then
         error("ArgumentNullException: " .. name .. " is null.");
-    elseif type(value) ~= "boolean" then
+    elseif value ~= nil and type(value) ~= "boolean" then
         error("ArgumentException: " .. name .. " is not a boolean.");
     end
 end
@@ -33,7 +33,7 @@ function TDTModAPI_Lua_Assert.AssertNumber(value, name, acceptNull)
 
     if (not (acceptNull or true)) and value == nil then
         error("ArgumentNullException: " .. name .. " is null.");
-    elseif type(value) ~= "number" then
+    elseif value ~= nil and type(value) ~= "number" then
         error("ArgumentException: " .. name .. " is not a number.");
     end
 end
@@ -52,9 +52,9 @@ function TDTModAPI_Lua_Assert.AssertIntegerNumber(value, name, acceptNull)
 
     if (not (acceptNull or true)) and value == nil then
         error("ArgumentNullException: " .. name .. " is null.");
-    elseif type(value) ~= "number" then
+    elseif value ~= nil and type(value) ~= "number" then
         error("ArgumentException: " .. name .. " is not a number.");
-    elseif string.find(value, "%d+%.%d+") ~= nil then
+    elseif value ~= nil and string.find(value, "%d+%.%d+") ~= nil then
         error("ArgumentException: " .. name .. " is not a valid integer.");
     end
 end
@@ -73,7 +73,7 @@ function TDTModAPI_Lua_Assert.AssertString(value, name, acceptNull)
 
     if (not (acceptNull or true)) and value == nil then
         error("ArgumentNullException: " .. name .. " is null.");
-    elseif type(value) ~= "string" then
+    elseif value ~= nil and type(value) ~= "string" then
         error("ArgumentException: " .. name .. " is not a string.");
     end
 end
@@ -92,7 +92,7 @@ function TDTModAPI_Lua_Assert.AssertFunction(value, name, acceptNull)
 
     if (not (acceptNull or true)) and value == nil then
         error("ArgumentNullException: " .. name .. " is null.");
-    elseif type(value) ~= "function" then
+    elseif value ~= nil and type(value) ~= "function" then
         error("ArgumentException: " .. name .. " is not a function.");
     end
 end
@@ -111,7 +111,7 @@ function TDTModAPI_Lua_Assert.AssertTable(value, name, acceptNull)
 
     if (not (acceptNull or true)) and value == nil then
         error("ArgumentNullException: " .. name .. " is null.");
-    elseif type(value) ~= "table" then
+    elseif value ~= nil and type(value) ~= "table" then
         error("ArgumentException: " .. name .. " is not a table.");
     end
 end
