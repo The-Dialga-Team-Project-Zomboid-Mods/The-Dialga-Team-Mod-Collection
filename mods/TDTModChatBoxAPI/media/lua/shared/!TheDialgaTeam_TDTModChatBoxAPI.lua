@@ -8,6 +8,7 @@ if type(TheDialgaTeam.TDTModChatBoxAPI) ~= "table" then
     TheDialgaTeam.TDTModChatBoxAPI = {};
 end
 
+--- @type TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags
 TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags = {
     -- No users are allowed.
     None = 0,
@@ -28,20 +29,8 @@ TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags = {
 TheDialgaTeam.TDTModChatBoxAPI.Commands = {};
 TheDialgaTeam.TDTModChatBoxAPI.Commands.RegisteredCommand = {};
 
-TheDialgaTeam.TDTModChatBoxAPI.Events = {};
-TheDialgaTeam.TDTModChatBoxAPI.Events.OnCommandEntered = {};
-TheDialgaTeam.TDTModChatBoxAPI.Events.OnCommandEntered.Trigger = {};
-
-function TheDialgaTeam.TDTModChatBoxAPI.Events.OnCommandEntered.Add(func)
-    TheDialgaTeam.TDTModAPI.Event.Add(TheDialgaTeam.TDTModChatBoxAPI.Events.OnCommandEntered.Trigger, func);
-end
-
-function TheDialgaTeam.TDTModChatBoxAPI.Events.OnCommandEntered.Remove(func)
-    TheDialgaTeam.TDTModAPI.Event.Remove(TheDialgaTeam.TDTModChatBoxAPI.Events.OnCommandEntered.Trigger, func);
-end
-
-function TheDialgaTeam.TDTModChatBoxAPI.Commands.RegisterCommand(commandName, func)
-    table.insert(TheDialgaTeam.TDTModChatBoxAPI.Commands.RegisteredCommand, { Command = commandName, Function = func });
+function TheDialgaTeam.TDTModChatBoxAPI.Commands.RegisterCommand(modId, commandName, func)
+    table.insert(TheDialgaTeam.TDTModChatBoxAPI.Commands.RegisteredCommand, { ModId = modId, Command = commandName, Function = func });
 end
 
 print "[TDTModChatBoxAPI] Global table injected!";

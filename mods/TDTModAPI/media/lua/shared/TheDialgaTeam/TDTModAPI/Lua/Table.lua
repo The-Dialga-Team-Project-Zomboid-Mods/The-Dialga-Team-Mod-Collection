@@ -1,4 +1,7 @@
+--- @type TheDialgaTeam.TDTModAPI.Lua.Assert
 local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
+
+--- @class TheDialgaTeam.TDTModAPI.Lua.Table
 local TDTModAPI_Lua_Table = {};
 
 --- Copy the table contents recursively.

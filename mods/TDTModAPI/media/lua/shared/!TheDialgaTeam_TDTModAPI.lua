@@ -1,3 +1,5 @@
+--- @class TheDialgaTeam
+--- @field public TDTModAPI TheDialgaTeam.TDTModAPI
 TheDialgaTeam = TheDialgaTeam or {};
 
 -- ######################################################################################
@@ -5,13 +7,28 @@ TheDialgaTeam = TheDialgaTeam or {};
 -- ######################################################################################
 
 if type(TheDialgaTeam.TDTModAPI) ~= "table" then
+    --- @class TheDialgaTeam.TDTModAPI
+    --- @field public Event TheDialgaTeam.TDTModAPI.Event
+    --- @field public Json TheDialgaTeam.TDTModAPI.Json
+    --- @field public Lua TheDialgaTeam.TDTModAPI.Lua
+    --- @field public PZ TheDialgaTeam.TDTModAPI.PZ
+    --- @field public System TheDialgaTeam.TDTModAPI.System
     TheDialgaTeam.TDTModAPI = {};
 end
 
+--- @type TheDialgaTeam.TDTModAPI.Event
 TheDialgaTeam.TDTModAPI.Event = require "TheDialgaTeam/TDTModAPI/Event";
+
+--- @type TheDialgaTeam.TDTModAPI.Json
 TheDialgaTeam.TDTModAPI.Json = require "TheDialgaTeam/TDTModAPI/Json";
+
+--- @type TheDialgaTeam.TDTModAPI.Lua
 TheDialgaTeam.TDTModAPI.Lua = require "TheDialgaTeam/TDTModAPI/Lua";
+
+--- @type TheDialgaTeam.TDTModAPI.PZ
 TheDialgaTeam.TDTModAPI.PZ = require "TheDialgaTeam/TDTModAPI/PZ";
+
+--- @type TheDialgaTeam.TDTModAPI.System
 TheDialgaTeam.TDTModAPI.System = require "TheDialgaTeam/TDTModAPI/System";
 
 print "[TDTModAPI] Global table injected!";

@@ -1,4 +1,7 @@
+--- @type TheDialgaTeam.TDTModAPI.Lua.Assert
 local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
+
+--- @class TheDialgaTeam.TDTModAPI.PZ.Color
 local TDTModAPI_PZ_Color = {};
 
 --- Convert PZ color table to rgb color table.

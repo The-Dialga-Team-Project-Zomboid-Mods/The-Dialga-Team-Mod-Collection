@@ -1,3 +1,4 @@
+--- @class TheDialgaTeam.TDTModAPI.Lua.Assert
 local TDTModAPI_Lua_Assert = {};
 
 --- Assert that the value is a boolean.

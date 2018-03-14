@@ -1,4 +1,7 @@
+--- @type TheDialgaTeam.TDTModAPI.Lua.Assert
 local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
+
+--- @class TheDialgaTeam.TDTModAPI.System.Random
 local TDTModAPI_System_Random = {};
 
 --- Returns a random integer that is within a specified range.

@@ -1,89 +1,102 @@
+--- @class TheDialgaTeam.TDTModAPI.System.IO.File
 local TDTModAPI_System_IO_File = {};
 
-function TDTModAPI_System_IO_File.LoadFile(modId, filename)
-	local file = getModFileReader(modId, filename, true);
-	local content = "";
-	local line = nil;
-	
-	while true do
-		line = file:readLine();
-		
-		if line == nil then
-			file:close();
-			break;
-		end
-		
-		content = content .. line .. "\n";
-	end
-	
-	return content;
+--- Opens a file, appends the specified string to the file, and then closes the file.
+--- If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file.
+--- @param modId string Modification Identifier.
+--- @param path string Relative path from the mod folder.
+--- @param contents string The lines to append to the file.
+function TDTModAPI_System_IO_File.AppendAllLines(modId, path, contents)
+    local file = getModFileWriter(modId, path, true, true);
+
+    for i, v in ipairs(contents) do
+        file:write(v .. "\n");
+    end
+
+    file:close();
 end
 
-function TDTModAPI_System_IO_File.SaveFile(modId, filename, data)
-	local file = getModFileWriter(modId, filename, true, false);
-	file:write(data);
-	file:close();
+--- Opens a file, appends the specified string to the file, and then closes the file.
+--- If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file.
+--- @param modId string Modification Identifier.
+--- @param path string Relative path from the mod folder.
+--- @param contents string The string to append to the file.
+function TDTModAPI_System_IO_File.AppendAllText(modId, path, contents)
+    local file = getModFileWriter(modId, path, true, true);
+    file:write(contents);
+    file:close();
 end
 
-function TDTModAPI_System_IO_File.LoadIniFile(modId, filename)
-	local file = getModFileReader(modId, filename, true);
-	local data = {};
-	local section;
-	local line = nil;
-	
-	while true do
-		line = file:readLine();
-		
-		if line == nil then
-			file:close();
-			break;
-		end
-		
-		local tempSection = line:match('^%[([^%[%]]+)%]$');
-		
-		if tempSection then
-			section = tonumber(tempSection) and tonumber(tempSection) or tempSection;
-			data[section] = data[section] or {};
-		end
-		
-		local param, value = line:match('^([%w|_]+)%s-=%s-(.+)$');
-		
-		if param and value ~= nil then
-			if tonumber(value) then
-				value = tonumber(value);
-			elseif value == 'true' then
-				value = true;
-			elseif value == 'false' then
-				value = false;
-			end
-			
-			if tonumber(param) then
-				param = tonumber(param);
-			end
-			
-			data[section][param] = value;
-		end
-	end
-	
-	return data;
+--- Opens a text file, reads all lines of the file, and then closes the file.
+--- @param modId string Modification Identifier.
+--- @param path string Relative path from the mod folder.
+--- @return string A string array containing all lines of the file.
+function TDTModAPI_System_IO_File.ReadAllLines(modId, path)
+    local file = getModFileReader(modId, path, true);
+    local content = {};
+    local line = nil;
+
+    while true do
+        line = file:readLine();
+
+        if line == nil then
+            file:close();
+            break;
+        end
+
+        table.insert(content, line);
+    end
+
+    return content;
 end
 
-function TDTModAPI_System_IO_File.SaveIniFile(modId, filename, data)
-	local file = getModFileWriter(modId, filename, true, false);
-	local contents = '';
-	
-	for section, param in pairs(data) do
-		contents = contents .. ('[%s]\r\n'):format(section);
-		
-		for key, value in pairs(param) do
-			contents = contents .. ('%s=%s\r\n'):format(key, tostring(value));
-		end
-		
-		contents = contents .. '\r\n';
-	end
-	
-	file:write(contents);
-	file:close();
+--- Opens a text file, reads all lines of the file, and then closes the file.
+--- @param modId string Modification Identifier.
+--- @param path string Relative path from the mod folder.
+--- @return string A string containing all lines of the file.
+function TDTModAPI_System_IO_File.ReadAllText(modId, path)
+    local file = getModFileReader(modId, path, true);
+    local content = "";
+    local line = nil;
+
+    while true do
+        line = file:readLine();
+
+        if line == nil then
+            file:close();
+            break;
+        end
+
+        content = content .. line .. "\n";
+    end
+
+    return content;
+end
+
+--- Creates a new file, writes the specified string to the file, and then closes the file.
+--- If the target file already exists, it is overwritten.
+--- @param modId string Modification Identifier.
+--- @param path string Relative path from the mod folder.
+--- @param contents string The string array to write to the file.
+function TDTModAPI_System_IO_File.WriteAllLines(modId, path, contents)
+    local file = getModFileWriter(modId, path, true, false);
+
+    for i, v in ipairs(contents) do
+        file:write(v .. "\n");
+    end
+
+    file:close();
+end
+
+--- Creates a new file, writes the specified string to the file, and then closes the file.
+--- If the target file already exists, it is overwritten.
+--- @param modId string Modification Identifier.
+--- @param path string Relative path from the mod folder.
+--- @param contents string The string to write to the file.
+function TDTModAPI_System_IO_File.WriteAllText(modId, path, contents)
+    local file = getModFileWriter(modId, path, true, false);
+    file:write(contents);
+    file:close();
 end
 
 return TDTModAPI_System_IO_File;

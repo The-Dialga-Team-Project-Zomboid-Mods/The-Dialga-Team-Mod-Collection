@@ -1,266 +1,493 @@
+--- @type TheDialgaTeam.TDTModAPI.System.Object
+local Object = require "TheDialgaTeam/TDTModAPI/System/Object";
+
+--- @type TheDialgaTeam.TDTModAPI.Lua.Table
+local Table = require "TheDialgaTeam/TDTModAPI/Lua/Table";
+
+--- @type TheDialgaTeam.TDTModAPI.Lua.Assert
+local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
+
+--- @class TheDialgaTeam.TDTModAPI.System.String
+--- @field public Empty string
 local TDTModAPI_System_String = {};
 
---- Initializes a new instance of the string class.
--- @param value The string to instantiate.
--- @return The instance of the string.
-function TDTModAPI_System_String:new(value)
-    local o = {};
-    o.value = tostring(value);
+--- Represents the empty string. This field is read-only.
+TDTModAPI_System_String.Empty = "";
 
-    --- Returns a reference to this instance of String.
-    -- @return This instance of String.
-    function o:Clone()
-        return TDTModAPI_System_String:new(self.value);
+--- Initializes a new instance of the string class to the value indicated by a specified pointer to an array of Unicode characters.
+--- @param value string A pointer to a null-terminated array of Unicode characters.
+--- @return TheDialgaTeam.TDTModAPI.System.String.Instance A new instance of the string.
+function TDTModAPI_System_String.new(value)
+    --- @class TheDialgaTeam.TDTModAPI.System.String.Instance : TheDialgaTeam.TDTModAPI.System.Object.Instance
+    local self = Object.new();
+
+    self.__Type = "TheDialgaTeam.TDTModAPI.System.String";
+    self.__Value = value;
+
+    --- Returns a reference to this instance of string.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance A reference to this instance of string.
+    function self:Clone()
+        return Table.Copy(self);
     end
 
-    setmetatable(o, {
-        __newindex = function (table, key, value) end,
+    -- CompareTo
 
-        __len = function (table)
-            return table.value:len();
-        end,
-
-        __tostring = function (table)
-            return table.value;
-        end,
-
-        __pairs = function (table)
-            local i,n = 0, table.value:len();
-            return function ()
-                if i < n then
-                    return i, table.value:sub(i + 1, i +1);
-                end
-                i = i + 1;
+    --- Returns a value indicating whether a specified substring occurs within this string.
+    --- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance
+    --- @return boolean true if the value parameter occurs within this string, or if value is the empty string (""); otherwise, false.
+    function self:Contains(value)
+        local status, error = pcall(function ()
+            if value == nil then
+                error "ArgumentNullException: value is null.";
+            elseif type(value) ~= "string" and type(value) ~= "table" then
+                error "ArgumentException: value is not a string.";
             end
-        end,
+        end);
 
-        __ipairs = function (table)
-            local i,n = 0, table.value:len();
-            return function ()
-                if i < n then
-                    return i, table.value:sub(i + 1, i +1);
-                end
-                i = i + 1;
-            end
-        end,
-
-        __concat = function (table, table2)
-            if type(table) == "string" then
-                return table .. table2.value;
-            elseif type(table2) == "string" then
-                return table.value .. table2;
-            else
-                return table.value .. table2.value;
-            end
-        end,
-
-        __eq = function (table, table2)
-            if type(table) == "string" then
-                return table == table2.value;
-            elseif type(table2) == "string" then
-                return table.value == table2;
-            else
-                return table.value == table2.value;
-            end
-        end
-    });
-
-    return o;
-end
-
---- Returns a reference to this instance of String.
--- @return This instance of String.
-function TDTModAPI_System_String:Clone()
-    return TDTModAPI_System_String:new(self.value);
-end
-
---- Concatenates the string representations of the elements in a specified table.
--- @param values A table that contains the elements to concatenate.
--- @return The concatenated elements of values.
-function TDTModAPI_System_String.Concat(values)
-    if values == nil then
-        error "ArgumentNullException: values is null.";
-    elseif type(values) ~= "table" then
-        error "ArgumentException: values is not a table.";
-    end
-
-    local result = "";
-
-    for _, v in pairs(values) do
-        result = result .. v;
-    end
-
-    return result;
-end
-
-function TDTModAPI_System_String:Contains(value)
-    -- IndexOf
-end
-
---- Determines whether the end of this string instance matches the specified string.
--- @param value The string to compare to the substring at the end of this instance.
--- @param ignoreCase true to ignore case during the comparison; otherwise, false.
--- @return true if value matches the end of this instance; otherwise, false.
-function TDTModAPI_System_String:EndsWith(value, ignoreCase)
-    if value == nil then
-        error "ArgumentNullException: value is null.";
-    elseif type(value) ~= "string" then
-        error "ArgumentException: value is not a string.";
-    elseif ignoreCase ~= nil and type(ignoreCase) ~= "boolean" then
-        error "ArgumentException: ignoreCase is not a boolean.";
-    end
-
-    local newInstance = self.value;
-    local newValue = value;
-
-    if ignoreCase or false then
-        newInstance = self.value:lower();
-        newValue = value:lower();
-    end
-
-    return newInstance == newValue or newValue:len() == 0 or newInstance:sub(-newValue:len()) == newValue;
-end
-
---- Determines whether two specified string instance have the same value.
--- @param a The first string to compare, or nil.
--- @param b The second string to compare, or nil.
--- @param ignoreCase true to ignore case during the comparison; otherwise, false.
--- @return true if the value of the a parameter is equal to the value of the b parameter; otherwise, false.
-function TDTModAPI_System_String.Equals(a, b, ignoreCase)
-    if a ~= nil and type(a) ~= "string" then
-        error "ArgumentException: a is not a string.";
-    elseif b ~= nil and type(b) ~= "string" then
-        error "ArgumentException: b is not a string.";
-    elseif ignoreCase ~= nil and type(ignoreCase) ~= "boolean" then
-        error "ArgumentException: ignoreCase is not a boolean.";
-    end
-
-    local newA = a;
-    local newB = b;
-
-    if ignoreCase or false then
-        newA = a:lower();
-        newB = b:lower();
-    end
-
-    return newA == newB;
-end
-
---- Reports the one-based index of the first occurrence of the specified string in the current string instance. Parameters specify the starting search position in the current string, the number of characters in the current string to search, and the type of search to use for the specified string.
--- @param instance The original string to search.
--- @param value The string to seek.
--- @param startIndex The search starting position.
--- @param count The number of character positions to examine.
--- @param ignoreCase true to ignore case during the comparison; otherwise, false.
--- @return The one-based index position of the value parameter from the start of the current instance if that string is found, or 0 if it is not. If value is empty, the return value is startIndex.
-function TDTModAPI_System_String.IndexOf(instance, value, startIndex, count, ignoreCase)
-    if instance == nil then
-        error "ArgumentNullException: instance is null.";
-    elseif value == nil then
-        error "ArgumentNullException: value is null.";
-    elseif type(instance) ~= "string" then
-        error "ArgumentException: instance is not a string.";
-    elseif type(value) ~= "string" then
-        error "ArgumentException: value is not a string.";
-    elseif startIndex ~= nil and type(startIndex) ~= "number" then
-        error "ArgumentException: startIndex is not a number.";
-    elseif startIndex ~= nil and (startIndex - 1 < 0 or startIndex - 1 > instance:len()) then
-        error "ArgumentOutOfRangeException: startIndex is out of range.";
-    elseif count ~= nil and type(count) ~= "number" then
-        error "ArgumentException: count is not a number.";
-    elseif count ~= nil and (count < 0 or startIndex - 1 > instance:len() - count) then
-        error "ArgumentOutOfRangeException: count is out of range."
-    elseif ignoreCase ~= nil and type(ignoreCase) ~= "boolean" then
-        error "ArgumentException: ignoreCase is not a boolean.";
-    end
-
-    if value == "" then
-        return startIndex;
-    end
-
-    local newInstance = instance;
-    local newValue = value;
-    local newStartIndex = startIndex or 1;
-    local newCount = count or instance:len() - startIndex - 1;
-
-    if ignoreCase or false then
-        newInstance = instance:lower();
-        newValue = instance:lower();
-    end
-
-    for i = newStartIndex, newStartIndex + newCount - 1 do
-        if i + newValue:len() - 1 > newInstance:len() then
-            break;
-        end
-
-        if newValue:len() > newCount then
-           if newInstance:sub(i, i + newCount - 1) == newValue then
-               return i;
-           end
+        if status then
+            return self:IndexOf(value, false) >= 1;
         else
-            if newInstance:sub(i, i + newValue:len() - 1) == newValue then
-                return i;
-            end
+            print(error);
+            return nil;
         end
     end
 
-    return 0;
-end
+    --- Determines whether the end of this string instance matches the specified string.
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance):boolean
+    --- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to compare to the substring at the end of this instance.
+    --- @param ignoreCase boolean true to ignore case during the comparison; otherwise, false.
+    --- @return boolean true if value matches the end of this instance; otherwise, false.
+    function self:EndsWith(value, ignoreCase)
+        local status, error = pcall(function ()
+            if value == nil then
+                error "ArgumentNullException: value is null.";
+            elseif type(value) ~= "string" and type(value) ~= "table" then
+                error "ArgumentException: value is not a string.";
+            end
 
---- Returns a new string in which a specified string is inserted at a specified index position in this instance.
--- @param instance The original string to insert.
--- @param startIndex The one-based index position of the insertion.
--- @param value The string to insert.
--- @return A new string that is equivalent to this instance, but with value inserted at position startIndex.
-function TDTModAPI_System_String.Insert(instance, startIndex, value)
-    if instance == nil then
-        error "ArgumentNullException: instance is null.";
-    elseif startIndex == nil then
-        error "ArgumentNullException: startIndex is null.";
-    elseif value == nil then
-        error "ArgumentNullException: value is null.";
-    elseif type(instance) ~= "string" then
-        error "ArgumentException: instance is not a string.";
-    elseif type(value) ~= "string" then
-        error "ArgumentException: value is not a string.";
-    elseif startIndex ~= nil and type(startIndex) ~= "number" then
-        error "ArgumentException: startIndex is not a number.";
-    elseif startIndex ~= nil and (startIndex - 1 < 0 or startIndex - 1 > instance:len()) then
-        error "ArgumentOutOfRangeException: startIndex is out of range.";
+            Assert.AssertBoolean(ignoreCase, "ignoreCase", true);
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+            local newValue = value;
+
+            if type(newValue) == "table" then
+                newValue = newValue.__Value;
+            end
+
+            if ignoreCase or false then
+                newInstance = string.lower(newInstance);
+                newValue = string.lower(newValue);
+            end
+
+            return newInstance == newValue or string.len(newValue) == 0 or string.sub(newInstance, -string.len(newValue)) == newValue;
+        else
+            print(error);
+            return nil;
+        end
     end
 
-    if startIndex > instance:len() then
-        return instance .. value;
-    elseif startIndex == 1 then
-        return value .. instance;
-    else
-        return instance:sub(1, startIndex - 1) .. value .. instance:sub(startIndex);
+    --- Determines whether two specified string instance have the same value.
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance):boolean
+    --- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to compare to this instance.
+    --- @param ignoreCase boolean true to ignore case during the comparison; otherwise, false.
+    --- @return boolean true if the value of the a parameter is equal to the value of the b parameter; otherwise, false.
+    function self:Equals(value, ignoreCase)
+        local status, error = pcall(function ()
+            if value == nil then
+                error "ArgumentNullException: value is null.";
+            elseif type(value) ~= "string" and type(value) ~= "table" then
+                error "ArgumentException: value is not a string.";
+            end
+
+            Assert.AssertBoolean(ignoreCase, "ignoreCase", true);
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+            local newValue = value;
+
+            if type(newValue) == "table" then
+                newValue = newValue.__Value;
+            end
+
+            if ignoreCase or false then
+                newInstance = string.lower(newInstance);
+                newValue = string.lower(newValue);
+            end
+
+            return newInstance == newValue;
+        else
+            print(error);
+            return nil;
+        end
     end
+
+    --- Reports the one-based index of the first occurrence of the specified string in the current string instance.
+    --- Parameters specify the starting search position in the current string, the number of characters in the current string to search, and the type of search to use for the specified string.
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance):number
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance, startIndex:number):number
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance, startIndex:number, count:number):number
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance, ignoreCase:boolean):number
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance, startIndex:number, ignoreCase:boolean):number
+    --- @overload fun(value:string | TheDialgaTeam.TDTModAPI.System.String.Instance, startIndex:number, count:number, ignoreCase:boolean):number
+    --- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to seek.
+    --- @param startIndex number The search starting position.
+    --- @param count number The number of character positions to examine.
+    --- @param ignoreCase boolean true to ignore case during the comparison; otherwise, false.
+    --- @return number The one-based index position of the value parameter from the start of the current instance if that string is found, or 0 if it is not. If value is empty, the return value is startIndex.
+    function self:IndexOf(value, startIndex, count, ignoreCase)
+        local status, error = pcall(function ()
+            if value == nil then
+                error "ArgumentNullException: value is null.";
+            elseif type(value) ~= "string" and type(value) ~= "table" then
+                error "ArgumentException: value is not a string.";
+            end
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+            local newValue = value;
+            local newStartIndex = startIndex;
+            local newCount = count;
+            local newIgnoreCase = ignoreCase;
+
+            if type(value) == "table" then
+                newValue = value.__Value;
+            end
+
+            if type(newStartIndex) == "boolean" then
+                newStartIndex = 1;
+                newIgnoreCase = startIndex;
+            elseif newStartIndex == nil then
+                newStartIndex = 1;
+            end
+
+            if type(count) == "boolean" then
+                newCount = newValue:len();
+                newIgnoreCase = count;
+            elseif newCount == nil then
+                newCount = newValue:len();
+            end
+
+            if type(ignoreCase) == "boolean" then
+                newIgnoreCase = ignoreCase;
+            end
+
+            if ignoreCase or false then
+                newInstance = newInstance:lower();
+                newValue = newValue:lower();
+            end
+
+            for i = newStartIndex, newStartIndex + newCount - 1 do
+                if i + newValue:len() - 1 > newInstance:len() then
+                    break;
+                end
+
+                if newValue:len() > newCount then
+                    if newInstance:sub(i, i + newCount - 1) == newValue then
+                        return i;
+                    end
+                else
+                    if newInstance:sub(i, i + newValue:len() - 1) == newValue then
+                        return i;
+                    end
+                end
+            end
+
+            return 0;
+        else
+            print(error);
+            return nil;
+        end
+    end
+
+    -- IndexOfAny
+
+    --- Returns a new string in which a specified string is inserted at a specified index position in this instance.
+    --- @param startIndex number The one-based index position of the insertion.
+    --- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to insert.
+    --- @return string A new string that is equivalent to this instance, but with value inserted at position startIndex.
+    function self:Insert(startIndex, value)
+        local status, error = pcall(function ()
+            if value == nil then
+                error "ArgumentNullException: value is null.";
+            elseif type(value) ~= "string" and type(value) ~= "table" then
+                error "ArgumentException: value is not a string.";
+            end
+
+            Assert.AssertNumber(startIndex, "startIndex");
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+
+            if startIndex > string.len(newInstance) then
+                return newInstance .. value;
+            elseif startIndex == 1 then
+                return value .. newInstance;
+            else
+                return string.sub(newInstance, 1, startIndex - 1) .. value .. string.sub(newInstance, startIndex);
+            end
+        else
+            print(error);
+            return nil;
+        end
+    end
+
+    -- LastIndexOf
+
+    -- LastIndexOfAny
+
+    --- Returns a new string that right-aligns the characters in this instance by padding them on the left with a specified Unicode character, for a specified total length.
+    --- @param totalWidth number The number of characters in the resulting string, equal to the number of original characters plus any additional padding characters.
+    --- @param paddingChar string | TheDialgaTeam.TDTModAPI.System.String.Instance A Unicode padding character.
+    --- @return string A new string that is equivalent to this instance, but right-aligned and padded on the left with as many paddingChar characters as needed to create a length of totalWidth.
+    --- However, if totalWidth is less than the length of this instance, the method returns a reference to the existing instance.
+    --- If totalWidth is equal to the length of this instance, the method returns a new string that is identical to this instance.
+    function self:PadLeft(totalWidth, paddingChar)
+        local status, error = pcall(function ()
+            if paddingChar == nil then
+                error "ArgumentNullException: paddingChar is null.";
+            elseif type(paddingChar) ~= "string" and type(paddingChar) ~= "table" then
+                error "ArgumentException: paddingChar is not a string.";
+            end
+
+            Assert.AssertNumber(totalWidth, "totalWidth");
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+
+            if totalWidth <= string.len(newInstance) then
+                return newInstance;
+            else
+                for i = 1, totalWidth - string.len(newInstance) do
+                    newInstance = " " .. newInstance;
+                end
+
+                return newInstance;
+            end
+        else
+            print(error);
+            return nil;
+        end
+    end
+
+    --- Returns a new string that left-aligns the characters in this string by padding them on the right with a specified Unicode character, for a specified total length.
+    --- @param totalWidth number The number of characters in the resulting string, equal to the number of original characters plus any additional padding characters.
+    --- @param paddingChar string | TheDialgaTeam.TDTModAPI.System.String.Instance A Unicode padding character.
+    --- @return string A new string that is equivalent to this instance, but left-aligned and padded on the right with as many paddingChar characters as needed to create a length of totalWidth.
+    --- However, if totalWidth is less than the length of this instance, the method returns a reference to the existing instance.
+    --- If totalWidth is equal to the length of this instance, the method returns a new string that is identical to this instance.
+    function self:PadRight(totalWidth, paddingChar)
+        local status, error = pcall(function ()
+            if paddingChar == nil then
+                error "ArgumentNullException: paddingChar is null.";
+            elseif type(paddingChar) ~= "string" and type(paddingChar) ~= "table" then
+                error "ArgumentException: paddingChar is not a string.";
+            end
+
+            Assert.AssertNumber(totalWidth, "totalWidth");
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+
+            if totalWidth <= string.len(newInstance) then
+                return newInstance;
+            else
+                for i = 1, totalWidth - string.len(newInstance) do
+                    newInstance = newInstance .. " ";
+                end
+
+                return newInstance;
+            end
+        else
+            print(error);
+            return nil;
+        end
+    end
+
+    --- Returns a new string in which a specified number of characters in the current instance beginning at a specified position have been deleted.
+    --- @overload fun(startIndex:number):string
+    --- @param startIndex number The one-based position to begin deleting characters.
+    --- @param count number The number of characters to delete.
+    --- @return string A new string that is equivalent to this instance except for the removed characters.
+    function self:Remove(startIndex, count)
+        local status, error = pcall(function ()
+            Assert.AssertNumber(startIndex, "startIndex");
+            Assert.AssertNumber(count, "count", true);
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+            local newString = "";
+            local removeCount = 0;
+
+            for i = 1, newInstance:len() do
+                if i >= startIndex then
+                    removeCount = removeCount + 1;
+
+                    if removeCount > (count or string.len(newInstance)) then
+                        newString = newString .. string.sub(newInstance, i, i);
+                    end
+                else
+                    newString = newString .. string.sub(newInstance, i, i);
+                end
+            end
+
+            return newString;
+        else
+            print(error);
+            return nil;
+        end
+    end
+
+    -- Replace
+
+    -- Split
+
+    --- Determines whether the beginning of this string instance matches the specified string when compared using the specified comparison option.
+    --- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to compare.
+    --- @param ignoreCase boolean true to ignore case during the comparison; otherwise, false.
+    --- @return boolean true if this instance begins with value; otherwise, false.
+    function self:StartsWith(value, ignoreCase)
+        local status, error = pcall(function ()
+            if value == nil then
+                error "ArgumentNullException: value is null.";
+            elseif type(value) ~= "string" and type(value) ~= "table" then
+                error "ArgumentException: value is not a string.";
+            end
+
+            Assert.AssertBoolean(ignoreCase, "ignoreCase", true);
+        end);
+
+        if status then
+            local newInstance = self.__Value;
+            local newValue = value;
+
+            if type(newValue) == "table" then
+                newValue = newValue.__Value;
+            end
+
+            if ignoreCase or false then
+                newInstance = string.lower(newInstance);
+                newValue = string.lower(newValue);
+            end
+
+            return newInstance == newValue or string.len(newValue) == 0 or string.sub(newInstance, 1, string.len(newValue)) == newValue;
+        else
+            print(error);
+            return nil;
+        end
+    end
+
+    -- SubString
+
+    -- ToCharArray
+
+    --- Returns a copy of this string converted to lowercase.
+    --- @return string A string in lowercase.
+    function self:ToLower()
+        return string.lower(self.__Value);
+    end
+
+    --- Returns this instance of string; no actual conversion is performed.
+    --- @return string The current string.
+    function self:ToString()
+        return self.__Value;
+    end
+
+    --- Returns a copy of this string converted to uppercase.
+    --- @return string The uppercase equivalent of the current string.
+    function self:ToUpper()
+        return string.upper(self.__Value);
+    end
+
+    --- Removes all leading and trailing occurrences of a set of characters specified in an array from the current string object.
+    --- @return string The string that remains after all white-space characters are removed from the start and end of the current string.
+    --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
+    function self:Trim()
+        return string.gsub("^%s*(.-)%s*$", "%1");
+    end
+
+    --- Removes all trailing occurrences of a set of characters specified in an array from the current string object.
+    --- @return string The string that remains after all white-space characters are removed from the end of the current string.
+    --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
+    function self:TrimEnd()
+        return string.gsub("^(.-)%s*$", "%1");
+    end
+
+    --- Removes all trailing occurrences of a set of characters specified in an array from the current string object.
+    --- @return string The string that remains after all white-space characters are removed from the start of the current string.
+    --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
+    function self:TrimStart()
+        return string.gsub("^%s*(.-)$", "%1");
+    end
+
+    return self;
 end
+
+-- Compare
+
+-- Concat
+
+-- Equals
+
+-- Format
 
 --- Indicates whether the specified string is nil or an empty string.
--- @param value The string to test.
--- @return true if the value parameter is nil or an empty string (""); otherwise, false.
+--- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to test.
+--- @return boolean true if the value parameter is nil or an empty string (""); otherwise, false.
 function TDTModAPI_System_String.IsNullOrEmpty(value)
-    if value ~= nil and type(value) ~= "string" then
-        error "ArgumentException: value is not a string.";
-    end
+    local status, error = pcall(function ()
+        if value ~= nil and type(value) ~= "string" and type(value) ~= "table" then
+            error "ArgumentException: value is not a string.";
+        end
+    end);
 
-    return value == nil or value:len() == 0;
+    if status then
+        local newValue = value;
+
+        if type(newValue) == "table" then
+            newValue = newValue.__Value;
+        end
+
+        return newValue == nil or string.len(newValue) == 0;
+    else
+        print(error);
+        return nil;
+    end
 end
 
 --- Indicates whether a specified string is nil, empty, or consists only of white-space characters.
--- @param value The string to test.
--- @return true if the value parameter is nil or empty, or if value consists exclusively of white-space characters.
+--- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to test.
+--- @return boolean true if the value parameter is nil or empty, or if value consists exclusively of white-space characters.
 function TDTModAPI_System_String.IsNullorWhiteSpace(value)
-    if value ~= nil and type(value) ~= "string" then
-        error "ArgumentException: value is not a string.";
-    end
+    local status, error = pcall(function ()
+        if value ~= nil and type(value) ~= "string" and type(value) ~= "table" then
+            error "ArgumentException: value is not a string.";
+        end
+    end);
 
-    return TDTModAPI_System_String.IsNullOrEmpty(TDTModAPI_System_String.Trim(value));
+    if status then
+        local newValue = value;
+
+        if type(newValue) == "string" then
+            newValue = TDTModAPI_System_String.new(value);
+        end
+
+        return TDTModAPI_System_String.IsNullOrEmpty(newValue:Trim());
+    else
+        print(error);
+        return nil;
+    end
 end
 
-function TDTModAPI_System_String.Join(seperator, value)
+--[[
+function TDTModAPI_System_String.Join(separator, value)
     local result = "";
 
     for i, v in ipairs(value) do
@@ -273,32 +500,6 @@ function TDTModAPI_System_String.Join(seperator, value)
 
     return result;
 end
-
-function TDTModAPI_System_String.StartsWith(value, match)
-    return string.sub(value, 1, string.len(match)) == match;
-end
-
-function TDTModAPI_System_String.Trim(value)
-    return value:gsub("^%s*(.-)%s*$", "%1");
-end
-
-function TDTModAPI_System_String.Remove(value, index, count)
-    local newString = "";
-    local removeCount = 0;
-
-    for i = 1, #value do
-        if i >= index then
-            removeCount = removeCount + 1;
-
-            if removeCount > (count or #value) then
-                newString = newString .. value:sub(i, i);
-            end
-        else
-            newString = newString .. value:sub(i, i);
-        end
-    end
-
-    return newString;
-end
+]]--
 
 return TDTModAPI_System_String;

@@ -1,41 +1,66 @@
+--- @type TheDialgaTeam.TDTModAPI.Lua.Assert
 local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
+
+--- @type TheDialgaTeam.TDTModAPI.Lua.Table
 local Table = require "TheDialgaTeam/TDTModAPI/Lua/Table";
+
+--- @class TheDialgaTeam.TDTModAPI.System.Bitwise
+--- @field public Types TheDialgaTeam.TDTModAPI.System.Bitwise.Types
 local TDTModAPI_System_Bitwise = {};
-local TDTModAPI_System_Bitwise_Internal = {};
+
+local TDTModAPI_System_Bitwise_Private = {};
 
 --- Bitwise types.
+--- @class TheDialgaTeam.TDTModAPI.System.Bitwise.Types
+--- @field public bool TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public byte TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public sbyte TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public short TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public ushort TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public int TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public uint TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public long TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public ulong TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
 TDTModAPI_System_Bitwise.Types = {
     --- Boolean flag: false, true.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     bool = { type = "bool", minValue = 0, maxValue = 1, bits = 1, hasNegativeBits = false, value = { 0 } },
 
     --- Unsigned Byte: 0, 255.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     byte = { type = "byte", minValue = 0, maxValue = 255, bits = 8, hasNegativeBits = false, value = { 0 } },
 
     --- Signed Byte: -128, 127.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     sbyte = { type = "sbyte", minValue = -128, maxValue = 127, bits = 8, hasNegativeBits = true, value = { 0 } },
 
     --- Signed Short Integer: -32768, 32767.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     short = { type = "short", minValue = -32768, maxValue = 32767, bits = 16, hasNegativeBits = true, value = { 0 } },
 
     --- Unsigned Short Integer: 0, 65535.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     ushort = { type = "ushort", minValue = 0, maxValue = 65535, bits = 16, hasNegativeBits = false, value = { 0 } },
 
     --- Signed Integer: -2147483648, 2147483647.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     int = { type = "int", minValue = -2147483648, maxValue = 2147483647, bits = 32, hasNegativeBits = true, value = { 0 } },
 
     --- Unsigned Integer: 0, 4294967295.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     uint = { type = "uint", minValue = 0, maxValue = 4294967295, bits = 32, hasNegativeBits = false, value = { 0 } },
 
     --- Signed Long Integer: -9*10^18, 9*10^18.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     long = { type = "long", minValue = -9*10^18, maxValue = 9*10^18, bits = 64, hasNegativeBits = true, value = { 0 } },
 
     --- Unsigned Long Integer: 0, 1.8*10^19.
+    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     ulong = { type = "ulong", minValue = 0, maxValue = 1.8*10^19, bits = 64, hasNegativeBits = false, value = { 0 } }
 };
 
 --- Bitwise operation NOT (~)
---- @overload fun(binaryTable:number):number
---- @param binaryTable table Binary bits in table representation.
+--- @param binaryTable binaryTable | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.Not(binaryTable)
     local status, error = pcall(function ()
@@ -44,7 +69,7 @@ function TDTModAPI_System_Bitwise.Not(binaryTable)
         elseif type(binaryTable) ~= "table" and type(binaryTable) ~= "number" then
             error "ArgumentException: binaryTable is not a table or a number.";
         elseif type(binaryTable) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
         elseif type(binaryTable) == "number" then
             Assert.AssertIntegerNumber(binaryTable, "binaryTable");
         end
@@ -79,11 +104,8 @@ function TDTModAPI_System_Bitwise.Not(binaryTable)
 end
 
 --- Bitwise operation AND (&)
---- @overload fun(binaryTable:number, binaryTable2:number):number
---- @overload fun(binaryTable:number, binaryTable2:table):number
---- @overload fun(binaryTable:table, binaryTable2:number):number
---- @param binaryTable table Binary bits in table representation.
---- @param binaryTable2 table Binary bits in table representation.
+--- @param binaryTable binaryTable | number Binary bits in table representation.
+--- @param binaryTable2 binaryTable | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
     local status, error = pcall(function ()
@@ -96,11 +118,11 @@ function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
         elseif type(binaryTable2) ~= "table" and type(binaryTable2) ~= "number" then
             error "ArgumentException: binaryTable2 is not a table or a number.";
         elseif type(binaryTable) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
         elseif type(binaryTable) == "number" then
             Assert.AssertIntegerNumber(binaryTable, "binaryTable");
         elseif type(binaryTable2) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable2, "binaryTable2");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable2, "binaryTable2");
         elseif type(binaryTable2) == "number" then
             Assert.AssertIntegerNumber(binaryTable2, "binaryTable2");
         end
@@ -124,7 +146,7 @@ function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
 
         local index = 1;
         local maxIndex = #binaryBits.value;
-        local binaryBits3 = TDTModAPI_System_Bitwise_Internal.ResolveBestBinaryType(binaryBits, binaryBits2);
+        local binaryBits3 = TDTModAPI_System_Bitwise_Private.ResolveBestBinaryType(binaryBits, binaryBits2);
 
         if #binaryBits2.value <= maxIndex then
             maxIndex = #binaryBits2.value;
@@ -148,11 +170,8 @@ function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
 end
 
 --- Bitwise operation OR (|)
---- @overload fun(binaryTable:number, binaryTable2:number):number
---- @overload fun(binaryTable:number, binaryTable2:table):number
---- @overload fun(binaryTable:table, binaryTable2:number):number
---- @param binaryTable table Binary bits in table representation.
---- @param binaryTable2 table Binary bits in table representation.
+--- @param binaryTable binaryTable | number Binary bits in table representation.
+--- @param binaryTable2 binaryTable | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
     local status, error = pcall(function ()
@@ -165,11 +184,11 @@ function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
         elseif type(binaryTable2) ~= "table" and type(binaryTable2) ~= "number" then
             error "ArgumentException: binaryTable2 is not a table or a number.";
         elseif type(binaryTable) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
         elseif type(binaryTable) == "number" then
             Assert.AssertIntegerNumber(binaryTable, "binaryTable");
         elseif type(binaryTable2) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable2, "binaryTable2");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable2, "binaryTable2");
         elseif type(binaryTable2) == "number" then
             Assert.AssertIntegerNumber(binaryTable2, "binaryTable2");
         end
@@ -193,7 +212,7 @@ function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
 
         local index = 1;
         local maxIndex = #binaryBits.value;
-        local binaryBits3 = TDTModAPI_System_Bitwise_Internal.ResolveBestBinaryType(binaryBits, binaryBits2);
+        local binaryBits3 = TDTModAPI_System_Bitwise_Private.ResolveBestBinaryType(binaryBits, binaryBits2);
 
         if #binaryBits2.value >= maxIndex then
             maxIndex = #binaryBits2.value;
@@ -217,11 +236,8 @@ function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
 end
 
 --- Bitwise operation XOR (^)
---- @overload fun(binaryTable:number, binaryTable2:number):number
---- @overload fun(binaryTable:number, binaryTable2:table):number
---- @overload fun(binaryTable:table, binaryTable2:number):number
---- @param binaryTable table Binary bits in table representation.
---- @param binaryTable2 table Binary bits in table representation.
+--- @param binaryTable binaryTable | number Binary bits in table representation.
+--- @param binaryTable2 binaryTable | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
     local status, error = pcall(function ()
@@ -234,11 +250,11 @@ function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
         elseif type(binaryTable2) ~= "table" and type(binaryTable2) ~= "number" then
             error "ArgumentException: binaryTable2 is not a table or a number.";
         elseif type(binaryTable) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
         elseif type(binaryTable) == "number" then
             Assert.AssertIntegerNumber(binaryTable, "binaryTable");
         elseif type(binaryTable2) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable2, "binaryTable2");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable2, "binaryTable2");
         elseif type(binaryTable2) == "number" then
             Assert.AssertIntegerNumber(binaryTable2, "binaryTable2");
         end
@@ -262,7 +278,7 @@ function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
 
         local index = 1;
         local maxIndex = #binaryBits.value;
-        local binaryBits3 = TDTModAPI_System_Bitwise_Internal.ResolveBestBinaryType(binaryBits, binaryBits2);
+        local binaryBits3 = TDTModAPI_System_Bitwise_Private.ResolveBestBinaryType(binaryBits, binaryBits2);
 
         if #binaryBits2.value >= maxIndex then
             maxIndex = #binaryBits2.value;
@@ -287,7 +303,7 @@ function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
 end
 
 --- Bitwise operation LShift (<<)
---- @param binaryTable table Binary bits in table representation.
+--- @param binaryTable binaryTable | number Binary bits in table representation.
 --- @param value number Amount to shift.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.LShift(binaryTable, value)
@@ -297,7 +313,7 @@ function TDTModAPI_System_Bitwise.LShift(binaryTable, value)
         elseif type(binaryTable) ~= "table" and type(binaryTable) ~= "number" then
             error "ArgumentException: binaryTable is not a table or a number.";
         elseif type(binaryTable) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
         elseif type(binaryTable) == "number" then
             Assert.AssertIntegerNumber(binaryTable, "binaryTable");
         end
@@ -330,7 +346,7 @@ function TDTModAPI_System_Bitwise.LShift(binaryTable, value)
 end
 
 --- Bitwise operation RShift (>>)
---- @param binaryTable table Binary bits in table representation.
+--- @param binaryTable binaryTable | number Binary bits in table representation.
 --- @param value number Amount to shift.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.RShift(binaryTable, value)
@@ -340,7 +356,7 @@ function TDTModAPI_System_Bitwise.RShift(binaryTable, value)
         elseif type(binaryTable) ~= "table" and type(binaryTable) ~= "number" then
             error "ArgumentException: binaryTable is not a table or a number.";
         elseif type(binaryTable) == "table" then
-            TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+            TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
         elseif type(binaryTable) == "number" then
             Assert.AssertIntegerNumber(binaryTable, "binaryTable");
         end
@@ -385,12 +401,12 @@ end
 --- Convert value into binary bits representation.
 --- @overload fun(value:number):table
 --- @param value number Value to convert into binary bits.
---- @param valueType table Type of binary bits to convert into.
---- @return table Binary bits in table representation.
+--- @param valueType TheDialgaTeam.TDTModAPI.System.Bitwise.Type Type of binary bits to convert into.
+--- @return binaryTable Binary bits in table representation.
 function TDTModAPI_System_Bitwise.ConvertToBinaryTable(value, valueType)
     local status, error = pcall(function ()
         Assert.AssertIntegerNumber(value, "value");
-        TDTModAPI_System_Bitwise_Internal.AssertBitwiseType(valueType, "valueType", true);
+        TDTModAPI_System_Bitwise_Private.AssertBitwiseType(valueType, "valueType", true);
 
         if valueType ~= nil and (value < valueType.minValue or value > valueType.maxValue) then
             error("OverflowException: value is not within the range of " .. valueType.minValue .. " to " .. valueType.maxValue .. ".");
@@ -402,7 +418,7 @@ function TDTModAPI_System_Bitwise.ConvertToBinaryTable(value, valueType)
         local targetValue = value;
 
         if targetType == nil then
-            targetType = TDTModAPI_System_Bitwise_Internal.ResolveBestNumericType(value);
+            targetType = TDTModAPI_System_Bitwise_Private.ResolveBestNumericType(value);
         else
             targetType = Table.Copy(valueType);
         end
@@ -479,11 +495,11 @@ function TDTModAPI_System_Bitwise.ConvertToBinaryTable(value, valueType)
 end
 
 --- Trim padded zeros in the binary bits.
---- @param binaryTable table Binary bits in table representation.
---- @return table Trimmed binary bits in table representation.
+--- @param binaryTable binaryTable Binary bits in table representation.
+--- @return binaryTable Trimmed binary bits in table representation.
 function TDTModAPI_System_Bitwise.TrimPaddedZeros(binaryTable)
     local status, error = pcall(function ()
-        TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+        TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
     end);
 
     if status then
@@ -523,11 +539,11 @@ function TDTModAPI_System_Bitwise.TrimPaddedZeros(binaryTable)
 end
 
 --- Convert binary bits into numeric representation.
---- @param binaryTable table Binary bits in table representation.
+--- @param binaryTable binaryTable Binary bits in table representation.
 --- @return number Binary bits into numeric representation.
 function TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryTable)
     local status, error = pcall(function ()
-        TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
+        TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
     end);
 
     if status then
@@ -596,9 +612,9 @@ function TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryTable)
 end
 
 --- Get the best numeric type from the value.
---- @param value number Value to get the best numeric type.
---- @return table Best numeric type option.
-function TDTModAPI_System_Bitwise_Internal.ResolveBestNumericType(value)
+--- @param value TheDialgaTeam.TDTModAPI.System.Bitwise.Types Value to get the best numeric type.
+--- @return binaryTable Best numeric type option.
+function TDTModAPI_System_Bitwise_Private.ResolveBestNumericType(value)
     local status, error = pcall(function ()
         Assert.AssertIntegerNumber(value, "value")
     end);
@@ -632,13 +648,13 @@ function TDTModAPI_System_Bitwise_Internal.ResolveBestNumericType(value)
 end
 
 --- Get the biggest binary type from two binary values.
---- @param binaryTable table Binary bits in table representation.
---- @param binaryTable2 table Binary bits in table representation.
---- @return table Binary type table.
-function TDTModAPI_System_Bitwise_Internal.ResolveBestBinaryType(binaryTable, binaryTable2)
+--- @param binaryTable binaryTable Binary bits in table representation.
+--- @param binaryTable2 binaryTable Binary bits in table representation.
+--- @return binaryTable Binary type table.
+function TDTModAPI_System_Bitwise_Private.ResolveBestBinaryType(binaryTable, binaryTable2)
     local status, error = pcall(function ()
-        TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, "binaryTable");
-        TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable2, "binaryTable2");
+        TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
+        TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable2, "binaryTable2");
     end);
 
     if status then
@@ -684,10 +700,10 @@ function TDTModAPI_System_Bitwise_Internal.ResolveBestBinaryType(binaryTable, bi
 end
 
 --- Check if it is a valid binary table.
---- @overload fun(binaryTable:table, name:string):void
---- @param binaryTable table Binary bits in table representation.
+--- @overload fun(binaryTable:binaryTable, name:string):void
+--- @param binaryTable binaryTable Binary bits in table representation.
 --- @param acceptNull boolean Check if it accept null.
-function TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, name, acceptNull)
+function TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, name, acceptNull)
     if name == nil then
         error "ArgumentNullException: name is null.";
     elseif type(name) ~= "string" then
@@ -704,10 +720,10 @@ function TDTModAPI_System_Bitwise_Internal.AssertBinaryTable(binaryTable, name, 
 end
 
 --- Check if it is a valid bitwise type.
---- @overload fun(valueType:table, name:string):void
---- @param valueType table Bitwise type information.
+--- @overload fun(valueType:TheDialgaTeam.TDTModAPI.System.Bitwise.Types, name:string):void
+--- @param valueType TheDialgaTeam.TDTModAPI.System.Bitwise.Types Bitwise type information.
 --- @param acceptNull boolean Check if it accept null.
-function TDTModAPI_System_Bitwise_Internal.AssertBitwiseType(valueType, name, acceptNull)
+function TDTModAPI_System_Bitwise_Private.AssertBitwiseType(valueType, name, acceptNull)
     if name == nil then
         error "ArgumentNullException: name is null.";
     elseif type(name) ~= "string" then

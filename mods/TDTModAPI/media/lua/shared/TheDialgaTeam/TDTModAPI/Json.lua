@@ -1,5 +1,8 @@
+--- @type TheDialgaTeam.TDTModAPI.Lua.Assert
 local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
 local Json = require "TheDialgaTeam/TDTModAPI/Json/Plugin";
+
+--- @class TheDialgaTeam.TDTModAPI.Json
 local TDTModAPI_Json = {};
 
 --- Serialize Json object.

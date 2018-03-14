@@ -1,31 +1,22 @@
 local LuaNetHandler = {};
 
 function LuaNetHandler:new(parent)
-    local o = {};
+    local o = TheDialgaTeam.TDTModAPI.PZ.LuaNetHandler:new("TDTModChatBoxAPI");
     setmetatable(o, self);
     self.__index = self;
 
-    o.Parent = parent;
-
-    o.LuaNet = LuaNet:getInstance();
-    o.LuaNetModule = o.LuaNet.getModule("TDTModChatBoxAPI");
+    o.Super = parent;
 
     return o;
 end
 
-function LuaNetHandler:Initialize()
-    print "[TDTModChatBoxAPI:LuaNetHandler] Initialize LuaNetHandler.";
-
-    self.LuaNet.onInitAdd(function ()
-        LuaNetHandler.InitializeClient(self);
+function LuaNetHandler:InitializeCommandHandler()
+    self:AddCommandHandler("InitializeGlobalSettings", function (_, settings)
+        LuaNetHandler.ReceiveGlobalSettings(self, settings, true);
     end);
-end
 
-function LuaNetHandler:InitializeClient()
-    print "[TDTModChatBoxAPI:LuaNetHandler] Initialize Client Command.";
-
-    self.LuaNetModule.addCommandHandler("LoadGlobalSettings", function(player, settings)
-        LuaNetHandler.ReceiveGlobalSettings(self, player, settings);
+    self:AddCommandHandler("ReloadGlobalSettings", function (_, settings)
+        LuaNetHandler.ReceiveGlobalSettings(self, settings, false);
     end);
 end
 
@@ -34,11 +25,15 @@ function LuaNetHandler:RequestGlobalSettings()
     self.LuaNetModule.send("GetGlobalSettings", getPlayer():getOnlineID());
 end
 
-function LuaNetHandler:ReceiveGlobalSettings(player, settings)
+function LuaNetHandler:ReceiveGlobalSettings(settings, loadChatbox)
     if type(settings) ~= "table" then
         print "[TDTModChatBoxAPI:LuaNetHandler] Invalid package data sent from the server.";
     else
-        self.Parent.SettingsHandler:ApplyGlobalSettings(settings);
+        self.Super.SettingsHandler:ApplyGlobalSettings(settings);
+
+        if loadChatbox then
+            self.Super.InitializeChatBox();
+        end
     end
 end
 
