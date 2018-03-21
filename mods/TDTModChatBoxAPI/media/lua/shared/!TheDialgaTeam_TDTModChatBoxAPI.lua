@@ -1,3 +1,4 @@
+--- @type TheDialgaTeam
 TheDialgaTeam = TheDialgaTeam or {};
 
 -- ######################################################################################
@@ -5,27 +6,26 @@ TheDialgaTeam = TheDialgaTeam or {};
 -- ######################################################################################
 
 if type(TheDialgaTeam.TDTModChatBoxAPI) ~= "table" then
+    --- @class TheDialgaTeam.TDTModChatBoxAPI
+    --- @field public PermissionFlags TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags
     TheDialgaTeam.TDTModChatBoxAPI = {};
 end
 
---- @type TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags
+--- @class TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags
+--- @field public None TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags | permissionFlags
+--- @field public Self TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags | permissionFlags
+--- @field public Users TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags | permissionFlags
+--- @field public Admins TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags | permissionFlags
+--- @field public Everyone TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags | permissionFlags
 TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags = {
-    -- No users are allowed.
     None = 0,
-
-    -- Users that are not whitelisted and not admins.
-    Users = 1,
-
-    -- Users that are whitelisted.
-    WhiteListedUsers = 2,
-
-    -- Users that are admins.
+    Self = 1,
+    Users = 2,
     Admins = 4,
-
-    -- Everyone.
-    Everyone = 7,
+    Everyone = 1 + 2 + 4,
 };
 
+--- @class TheDialgaTeam.TDTModChatBoxAPI.Commands
 TheDialgaTeam.TDTModChatBoxAPI.Commands = {};
 TheDialgaTeam.TDTModChatBoxAPI.Commands.RegisteredCommand = {};
 

@@ -16,7 +16,7 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
     self.ModId = modId;
 
     self.LuaNet = LuaNet:getInstance();
-    self.LuaNetModule = self.LuaNet.getModule(modID);
+    self.LuaNetModule = self.LuaNet.getModule(modId);
 
     --- Initialize LuaNetHandler.
     function self:Initialize()

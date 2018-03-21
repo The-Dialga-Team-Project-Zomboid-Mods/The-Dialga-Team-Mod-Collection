@@ -1,5 +1,6 @@
 --- @class TheDialgaTeam
 --- @field public TDTModAPI TheDialgaTeam.TDTModAPI
+--- @field public TDTModChatBoxAPI TheDialgaTeam.TDTModChatBoxAPI
 TheDialgaTeam = TheDialgaTeam or {};
 
 -- ######################################################################################

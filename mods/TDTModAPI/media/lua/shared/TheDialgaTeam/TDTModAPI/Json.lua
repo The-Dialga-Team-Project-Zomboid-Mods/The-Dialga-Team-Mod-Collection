@@ -6,22 +6,18 @@ local Json = require "TheDialgaTeam/TDTModAPI/Json/Plugin";
 local TDTModAPI_Json = {};
 
 --- Serialize Json object.
---- @overload fun(table:table):string
+--- @overload fun(jsonTable:table):string
 --- @param jsonTable table Table to serialize.
---- @param isPretty boolean Makes the json output pretty.
+--- @param options table Custom json output options.
 --- @return string String containing the json object.
-function TDTModAPI_Json.Serialize(jsonTable, isPretty)
+function TDTModAPI_Json.Serialize(jsonTable, options)
     local status, error = pcall(function ()
         Assert.AssertTable(jsonTable, "jsonTable");
-        Assert.AssertBoolean(isPretty, "pretty", true);
+        Assert.AssertTable(options, "options", true);
     end);
 
     if status then
-        if isPretty or false then
-            return Json:encode(jsonTable);
-        else
-            return Json:encode_pretty(jsonTable);
-        end
+        return Json:encode(jsonTable, nil, options);
     else
         print(error);
         return nil;
