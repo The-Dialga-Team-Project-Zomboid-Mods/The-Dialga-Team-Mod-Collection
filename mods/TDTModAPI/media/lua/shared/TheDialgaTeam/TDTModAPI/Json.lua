@@ -5,6 +5,12 @@ local Json = require "TheDialgaTeam/TDTModAPI/Json/Plugin";
 --- @class TheDialgaTeam.TDTModAPI.Json
 local TDTModAPI_Json = {};
 
+--- @class TheDialgaTeam.TDTModAPI.Json.Options
+--- @field Pretty { pretty:boolean, indent:string, array_newline:boolean }
+TDTModAPI_Json.Options = {
+    Pretty = { pretty = true, indent = "  ", array_newline = true }
+};
+
 --- Serialize Json object.
 --- @overload fun(jsonTable:table):string
 --- @param jsonTable table Table to serialize.

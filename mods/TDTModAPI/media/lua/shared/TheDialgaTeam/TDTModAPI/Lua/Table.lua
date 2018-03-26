@@ -30,4 +30,40 @@ function TDTModAPI_Lua_Table.Copy(luaTable)
     end
 end
 
+--- Merge the table contents recursively.
+--- @param luaTable table Table to merge.
+--- @param luaTable2 table Contents to merge.
+--- @return table New table containing merged value.
+function TDTModAPI_Lua_Table.Merge(luaTable, luaTable2)
+    local status, error = pcall(function ()
+        Assert.AssertTable(luaTable, "luaTable");
+        Assert.AssertTable(luaTable2, "luaTable2");
+    end);
+
+    if status then
+        local newTable = TDTModAPI_Lua_Table.Copy(luaTable);
+
+        for k, v in pairs(luaTable2) do
+            if tonumber(k) ~= nil then
+                if type(v) ~= "table" then
+                    table.insert(newTable, v);
+                else
+                    table.insert(newTable, TDTModAPI_Lua_Table.Copy(v));
+                end
+            else
+                if type(v) ~= "table" then
+                    newTable[k] = v;
+                else
+                    newTable[k] = TDTModAPI_Lua_Table.Copy(v);
+                end
+            end
+        end
+
+        return newTable;
+    else
+        print(error);
+        return nil;
+    end
+end
+
 return TDTModAPI_Lua_Table;

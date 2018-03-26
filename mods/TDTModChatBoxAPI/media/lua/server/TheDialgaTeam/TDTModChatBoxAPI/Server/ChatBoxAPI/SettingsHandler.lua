@@ -4,8 +4,8 @@ local File = TheDialgaTeam.TDTModAPI.System.IO.File;
 --- @type TheDialgaTeam.TDTModAPI.Json
 local Json = TheDialgaTeam.TDTModAPI.Json;
 
---- @type TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags;
-local PermissionFlags = TheDialgaTeam.TDTModChatBoxAPI.PermissionFlags;
+--- @type TheDialgaTeam.TDTModAPI.Lua.Table
+local Table = TheDialgaTeam.TDTModAPI.Lua.Table;
 
 --- @class TheDialgaTeam.TDTModChatBoxAPI.Server.ChatBoxAPI.SettingsHandler
 local SettingsHandler = {};
@@ -57,7 +57,7 @@ function SettingsHandler.new(parent)
             self.Settings.Global.ChatBox.ServerMessage.Suffix = "";
 
             self.Settings.Global.ChatBox.ServerMessage.Permission = {};
-            self.Settings.Global.ChatBox.ServerMessage.Permission.Send = PermissionFlags.Admins;
+            self.Settings.Global.ChatBox.ServerMessage.Permission.Send = TheDialgaTeam.TDTModChatBoxAPI.ServerMessage.PermissionFlags.Admin;
 
             --- ########################################################################################################
             --- Global Chatbox Tabs settings.
@@ -68,26 +68,11 @@ function SettingsHandler.new(parent)
             self.Settings.Global.ChatBox.Tabs.Categories = {};
 
             --- ########################################################################################################
-            --- Tab: Default.
-            --- ########################################################################################################
-            table.insert(self.Settings.Global.ChatBox.Tabs.Categories, {
-                Name = "Default",
-                Permission = {
-                    Send = PermissionFlags.Everyone,
-                    Receive = PermissionFlags.Everyone
-                }
-            });
-
-            --- ########################################################################################################
             --- Tab: IC.
             --- ########################################################################################################
             table.insert(self.Settings.Global.ChatBox.Tabs.Categories, {
                 Name = "IC",
-                Enabled = false,
-                Permission = {
-                    Send = PermissionFlags.Everyone,
-                    Receive = PermissionFlags.Everyone
-                }
+                Enabled = false
             });
 
             --- ########################################################################################################
@@ -95,11 +80,7 @@ function SettingsHandler.new(parent)
             --- ########################################################################################################
             table.insert(self.Settings.Global.ChatBox.Tabs.Categories, {
                 Name = "OOC",
-                Enabled = false,
-                Permission = {
-                    Send = PermissionFlags.Everyone,
-                    Receive = PermissionFlags.Everyone
-                }
+                Enabled = false
             });
 
             --- ########################################################################################################
@@ -135,7 +116,7 @@ function SettingsHandler.new(parent)
             self.Settings.Global.ChatBox.ColorPicker.Enabled = false;
 
             self.Settings.Global.ChatBox.ColorPicker.Permission = {};
-            self.Settings.Global.ChatBox.ColorPicker.Permission.Use = PermissionFlags.Everyone;
+            self.Settings.Global.ChatBox.ColorPicker.Permission.Use = TheDialgaTeam.TDTModChatBoxAPI.ColorPicker.PermissionFlags.Everyone;
 
             --- ########################################################################################################
             --- Users settings.
@@ -147,27 +128,73 @@ function SettingsHandler.new(parent)
             --- ########################################################################################################
             self.Settings.Users.Steam = {};
 
-            table.insert(self.Settings.Users.Steam, {
-                SteamID = "76561198119937183",
-                IsMuted = false,
-            });
-
             --- ########################################################################################################
             --- Users: Character settings.
             --- ########################################################################################################
             self.Settings.Users.Character = {};
-
-            table.insert(self.Settings.Users.Character, {
-                Username = "jianmingyong",
-                IsMuted = false,
-            });
         end
 
-        File.WriteAllText("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json", Json.Serialize(self.Settings, { pretty = true, indent = "    ", array_newline = true }));
+        File.WriteAllText("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json", Json.Serialize(self.Settings, Json.Options.Pretty));
+    end
+
+    function self:SaveSettings()
+        File.WriteAllText("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json", Json.Serialize(self.Settings, Json.Options.Pretty));
     end
 
     function self:GetGlobalSettings()
         return self.Settings.Global;
+    end
+
+    function self:GetUserSettings(steamId, username)
+        local steam = self:GetSteamUserSettings(steamId);
+        local user = self:GetCharacterUserSettings(username);
+
+        return Table.Merge(user, steam);
+    end
+
+    function self:GetSteamUserSettings(steamId)
+        for i, v in ipairs(self.Settings.Users.Steam) do
+            if v.SteamID == steamId then
+                return v;
+            end
+        end
+
+        local newSteamUser = {
+            SteamID = steamId,
+            IsMuted = false,
+            ColorPickerPermission = false
+        };
+
+        table.insert(self.Settings.Users.Steam, newSteamUser);
+        self:SaveSettings();
+
+        return newSteamUser;
+    end
+
+    function self:GetCharacterUserSettings(username)
+        for i, v in ipairs(self.Settings.Users.Character) do
+            if v.Username == username then
+                return v;
+            end
+        end
+
+        local newCharacerUser = {
+            Username = username,
+            IsMuted = false,
+            NameColor = self.Settings.Global.ChatBox.MessageBox.NameColor,
+            FontColor = self.Settings.Global.ChatBox.InputField.Color
+        }
+
+        table.insert(self.Settings.Users.Character, newCharacerUser);
+        self:SaveSettings();
+
+        return newCharacerUser;
+    end
+
+    function self:ApplyUserFontColor(username, color)
+        local userSettings = self:GetCharacterUserSettings(username);
+        userSettings.FontColor = color;
+        self:SaveSettings();
     end
 
     return self;

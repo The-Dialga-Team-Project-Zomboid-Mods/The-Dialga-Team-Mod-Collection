@@ -71,6 +71,30 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
         end
     end
 
+    --- Send command into all other client.
+    --- @param playerId number Player to send this command.
+    --- @param command string Command to send.
+    --- @param params any Parameters to send.
+    function self:SendToOtherPlayer(playerId, command, params)
+        if isServer() then
+            if type(playerId) ~= "number" then
+                print("[" .. self.ModID .. ":LuaNetHandler] Invalid package data sent from the client.");
+                return;
+            end
+
+            local players = getOnlinePlayers();
+
+            for i = 0, players:size() - 1 do
+                local player = players:get(i);
+
+                if player:getOnlineID() ~= playerId then
+                    self.LuaNetModule.sendPlayer(player, command, params);
+                    print("[" .. self.ModID .. ":LuaNetHandler] Package data sent to " .. player:getUsername());
+                end
+            end
+        end
+    end
+
     --- Send command into all the client.
     --- @param command string Command to send.
     --- @param params any Parameters to send.

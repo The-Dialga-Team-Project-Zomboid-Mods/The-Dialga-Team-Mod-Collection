@@ -1,7 +1,6 @@
 --- @class TheDialgaTeam.TDTModAPI.System
 local TDTModAPI_System = {};
 
--- Import Packages
 --- @type TheDialgaTeam.TDTModAPI.System.Bitwise
 TDTModAPI_System.Bitwise = require "TheDialgaTeam/TDTModAPI/System/Bitwise";
 

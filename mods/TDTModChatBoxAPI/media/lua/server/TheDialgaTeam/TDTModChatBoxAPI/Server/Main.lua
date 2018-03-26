@@ -5,6 +5,8 @@ local LuaNetHandler = require "TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/
 local SettingsHandler = require "TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler";
 
 --- @class TheDialgaTeam.TDTModChatBoxAPI.Server.Main
+--- @field LuaNetHandler TheDialgaTeam.TDTModChatBoxAPI.Server.ChatBoxAPI.LuaNetHandler
+--- @field SettingsHandler TheDialgaTeam.TDTModChatBoxAPI.Server.ChatBoxAPI.SettingsHandler
 local Main = {};
 
 function Main.OnGameBoot()

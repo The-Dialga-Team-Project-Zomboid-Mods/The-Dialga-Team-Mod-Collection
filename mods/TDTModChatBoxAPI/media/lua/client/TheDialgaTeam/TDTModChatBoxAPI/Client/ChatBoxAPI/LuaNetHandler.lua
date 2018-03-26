@@ -18,6 +18,10 @@ function LuaNetHandler.new(parent)
         self:AddCommandHandler("ReloadGlobalSettings", function  (_, settings)
             self:ReceiveGlobalSettings(settings, false);
         end);
+
+        self:AddCommandHandler("UpdateUserSettings", function  (_, settings)
+            self:ReceiveUserSettings(settings);
+        end);
     end
 
     function self:RequestGlobalSettings()
@@ -35,6 +39,20 @@ function LuaNetHandler.new(parent)
             if loadChatbox then
                 self.Super.InitializeChatBox();
             end
+        end
+    end
+
+    function self:RequestUserSettings()
+        print "[TDTModChatBoxAPI:LuaNetHandler] Request user settings from server.";
+        self:SendToServer("GetUserSettings", { playerId = getPlayer():getOnlineID(), steamId = getSteamIDFromUsername(getPlayer():getUsername()) });
+    end
+
+    function self:ReceiveUserSettings(settings)
+        if type(settings) ~= "table" then
+            print "[TDTModChatBoxAPI:LuaNetHandler] Invalid package data sent from the server.";
+        else
+            print "[TDTModChatBoxAPI:LuaNetHandler] Receive user settings from server.";
+            self.Super.SettingsHandler:ApplyUserSettings(settings);
         end
     end
 

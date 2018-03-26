@@ -1,7 +1,6 @@
 --- @class TheDialgaTeam.TDTModAPI.PZ
 local TDTModAPI_PZ = {};
 
--- Import Packages
 --- @type TheDialgaTeam.TDTModAPI.PZ.Color
 TDTModAPI_PZ.Color = require "TheDialgaTeam/TDTModAPI/PZ/Color";
 

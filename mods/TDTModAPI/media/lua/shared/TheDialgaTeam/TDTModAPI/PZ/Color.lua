@@ -5,8 +5,8 @@ local Assert = require "TheDialgaTeam/TDTModAPI/Lua/Assert";
 local TDTModAPI_PZ_Color = {};
 
 --- Convert PZ color table to rgb color table.
---- @param colorTable table PZ color table.
---- @return table RGB color table.
+--- @param colorTable {r:number, g:number, b:number} PZ color table.
+--- @return {r:number, g:number, b:number} RGB color table.
 function TDTModAPI_PZ_Color.ConvertToRGB(colorTable)
     local status, error = pcall(function ()
         Assert.AssertTable(colorTable, "colorTable");
@@ -27,8 +27,8 @@ function TDTModAPI_PZ_Color.ConvertToRGB(colorTable)
 end
 
 --- Convert PZ color table to rgba color table.
---- @param colorTable table PZ color table.
---- @return table RGBA color table.
+--- @param colorTable {r:number, g:number, b:number, a:number} PZ color table.
+--- @return {r:number, g:number, b:number, a:number} RGBA color table.
 function TDTModAPI_PZ_Color.ConvertToRGBA(colorTable)
     local status, error = pcall(function ()
         Assert.AssertTable(colorTable, "colorTable");
@@ -50,8 +50,8 @@ function TDTModAPI_PZ_Color.ConvertToRGBA(colorTable)
 end
 
 --- Convert color table to PZ rgb color table.
---- @param colorTable table Color table.
---- @return table PZ rgb color table.
+--- @param colorTable {r:number, g:number, b:number} Color table.
+--- @return {r:number, g:number, b:number} PZ rgb color table.
 function TDTModAPI_PZ_Color.ConvertToPZRGB(colorTable)
     local status, error = pcall(function ()
         Assert.AssertTable(colorTable, "colorTable");
@@ -72,7 +72,7 @@ function TDTModAPI_PZ_Color.ConvertToPZRGB(colorTable)
 end
 
 --- Convert color table to PZ rich text rgb color text.
---- @param colorTable table Color table.
+--- @param colorTable {r:number, g:number, b:number} Color table.
 --- @return string Rich text rgb color text.
 function TDTModAPI_PZ_Color.ConvertToPZRichTextRGB(colorTable)
     local status, error = pcall(function ()
@@ -88,8 +88,8 @@ function TDTModAPI_PZ_Color.ConvertToPZRichTextRGB(colorTable)
 end
 
 --- Convert color table to PZ rgba color table.
---- @param colorTable table Color table.
---- @return table PZ rgba color table.
+--- @param colorTable {r:number, g:number, b:number, a:number} Color table.
+--- @return {r:number, g:number, b:number, a:number} PZ rgba color table.
 function TDTModAPI_PZ_Color.ConvertToPZRGBA(colorTable)
     local status, error = pcall(function ()
         Assert.AssertTable(colorTable, "colorTable");
@@ -111,8 +111,8 @@ function TDTModAPI_PZ_Color.ConvertToPZRGBA(colorTable)
 end
 
 --- Convert color table to PZ ColorInfo.
---- @param colorTable table Color table.
---- @return userdata ColorInfo.
+--- @param colorTable {r:number, g:number, b:number, a:number} Color table.
+--- @return zombie.core.Color.ColorInfo ColorInfo.
 function TDTModAPI_PZ_Color.ConvertToPZColorInfo(colorTable)
     local status, error = pcall(function ()
         Assert.AssertTable(colorTable, "colorTable");

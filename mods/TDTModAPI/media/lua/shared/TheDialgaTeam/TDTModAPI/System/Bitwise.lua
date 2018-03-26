@@ -12,55 +12,46 @@ local TDTModAPI_System_Bitwise_Private = {};
 
 --- Bitwise types.
 --- @class TheDialgaTeam.TDTModAPI.System.Bitwise.Types
---- @field public bool TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public byte TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public sbyte TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public short TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public ushort TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public int TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public uint TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public long TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
---- @field public ulong TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
+--- @field public bool { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public byte { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public sbyte { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public short { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public ushort { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public int { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public uint { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public long { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
+--- @field public ulong { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }
 TDTModAPI_System_Bitwise.Types = {
     --- Boolean flag: false, true.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     bool = { type = "bool", minValue = 0, maxValue = 1, bits = 1, hasNegativeBits = false, value = { 0 } },
 
     --- Unsigned Byte: 0, 255.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     byte = { type = "byte", minValue = 0, maxValue = 255, bits = 8, hasNegativeBits = false, value = { 0 } },
 
     --- Signed Byte: -128, 127.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     sbyte = { type = "sbyte", minValue = -128, maxValue = 127, bits = 8, hasNegativeBits = true, value = { 0 } },
 
     --- Signed Short Integer: -32768, 32767.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     short = { type = "short", minValue = -32768, maxValue = 32767, bits = 16, hasNegativeBits = true, value = { 0 } },
 
     --- Unsigned Short Integer: 0, 65535.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     ushort = { type = "ushort", minValue = 0, maxValue = 65535, bits = 16, hasNegativeBits = false, value = { 0 } },
 
     --- Signed Integer: -2147483648, 2147483647.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     int = { type = "int", minValue = -2147483648, maxValue = 2147483647, bits = 32, hasNegativeBits = true, value = { 0 } },
 
     --- Unsigned Integer: 0, 4294967295.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     uint = { type = "uint", minValue = 0, maxValue = 4294967295, bits = 32, hasNegativeBits = false, value = { 0 } },
 
     --- Signed Long Integer: -9*10^18, 9*10^18.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     long = { type = "long", minValue = -9*10^18, maxValue = 9*10^18, bits = 64, hasNegativeBits = true, value = { 0 } },
 
     --- Unsigned Long Integer: 0, 1.8*10^19.
-    --- @type TheDialgaTeam.TDTModAPI.System.Bitwise.Types | binaryTable
     ulong = { type = "ulong", minValue = 0, maxValue = 1.8*10^19, bits = 64, hasNegativeBits = false, value = { 0 } }
 };
 
 --- Bitwise operation NOT (~)
---- @param binaryTable binaryTable | number Binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.Not(binaryTable)
     local status, error = pcall(function ()
@@ -104,8 +95,8 @@ function TDTModAPI_System_Bitwise.Not(binaryTable)
 end
 
 --- Bitwise operation AND (&)
---- @param binaryTable binaryTable | number Binary bits in table representation.
---- @param binaryTable2 binaryTable | number Binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
+--- @param binaryTable2 { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
     local status, error = pcall(function ()
@@ -170,8 +161,8 @@ function TDTModAPI_System_Bitwise.And(binaryTable, binaryTable2)
 end
 
 --- Bitwise operation OR (|)
---- @param binaryTable binaryTable | number Binary bits in table representation.
---- @param binaryTable2 binaryTable | number Binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
+--- @param binaryTable2 { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
     local status, error = pcall(function ()
@@ -236,8 +227,8 @@ function TDTModAPI_System_Bitwise.Or(binaryTable, binaryTable2)
 end
 
 --- Bitwise operation XOR (^)
---- @param binaryTable binaryTable | number Binary bits in table representation.
---- @param binaryTable2 binaryTable | number Binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
+--- @param binaryTable2 { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
     local status, error = pcall(function ()
@@ -303,7 +294,7 @@ function TDTModAPI_System_Bitwise.Xor(binaryTable, binaryTable2)
 end
 
 --- Bitwise operation LShift (<<)
---- @param binaryTable binaryTable | number Binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
 --- @param value number Amount to shift.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.LShift(binaryTable, value)
@@ -346,7 +337,7 @@ function TDTModAPI_System_Bitwise.LShift(binaryTable, value)
 end
 
 --- Bitwise operation RShift (>>)
---- @param binaryTable binaryTable | number Binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } | number Binary bits in table representation.
 --- @param value number Amount to shift.
 --- @return number Numeric value of the binary bits representation.
 function TDTModAPI_System_Bitwise.RShift(binaryTable, value)
@@ -401,8 +392,8 @@ end
 --- Convert value into binary bits representation.
 --- @overload fun(value:number):table
 --- @param value number Value to convert into binary bits.
---- @param valueType TheDialgaTeam.TDTModAPI.System.Bitwise.Type Type of binary bits to convert into.
---- @return binaryTable Binary bits in table representation.
+--- @param valueType { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Type of binary bits to convert into.
+--- @return { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Binary bits in table representation.
 function TDTModAPI_System_Bitwise.ConvertToBinaryTable(value, valueType)
     local status, error = pcall(function ()
         Assert.AssertIntegerNumber(value, "value");
@@ -495,8 +486,8 @@ function TDTModAPI_System_Bitwise.ConvertToBinaryTable(value, valueType)
 end
 
 --- Trim padded zeros in the binary bits.
---- @param binaryTable binaryTable Binary bits in table representation.
---- @return binaryTable Trimmed binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Binary bits in table representation.
+--- @return { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Trimmed binary bits in table representation.
 function TDTModAPI_System_Bitwise.TrimPaddedZeros(binaryTable)
     local status, error = pcall(function ()
         TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
@@ -539,7 +530,7 @@ function TDTModAPI_System_Bitwise.TrimPaddedZeros(binaryTable)
 end
 
 --- Convert binary bits into numeric representation.
---- @param binaryTable binaryTable Binary bits in table representation.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Binary bits in table representation.
 --- @return number Binary bits into numeric representation.
 function TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryTable)
     local status, error = pcall(function ()
@@ -612,8 +603,8 @@ function TDTModAPI_System_Bitwise.ConvertToNumericValue(binaryTable)
 end
 
 --- Get the best numeric type from the value.
---- @param value TheDialgaTeam.TDTModAPI.System.Bitwise.Types Value to get the best numeric type.
---- @return binaryTable Best numeric type option.
+--- @param value { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Value to get the best numeric type.
+--- @return { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Best numeric type option.
 function TDTModAPI_System_Bitwise_Private.ResolveBestNumericType(value)
     local status, error = pcall(function ()
         Assert.AssertIntegerNumber(value, "value")
@@ -648,9 +639,9 @@ function TDTModAPI_System_Bitwise_Private.ResolveBestNumericType(value)
 end
 
 --- Get the biggest binary type from two binary values.
---- @param binaryTable binaryTable Binary bits in table representation.
---- @param binaryTable2 binaryTable Binary bits in table representation.
---- @return binaryTable Binary type table.
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Binary bits in table representation.
+--- @param binaryTable2 { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Binary bits in table representation.
+--- @return { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Binary type table.
 function TDTModAPI_System_Bitwise_Private.ResolveBestBinaryType(binaryTable, binaryTable2)
     local status, error = pcall(function ()
         TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, "binaryTable");
@@ -700,8 +691,8 @@ function TDTModAPI_System_Bitwise_Private.ResolveBestBinaryType(binaryTable, bin
 end
 
 --- Check if it is a valid binary table.
---- @overload fun(binaryTable:binaryTable, name:string):void
---- @param binaryTable binaryTable Binary bits in table representation.
+--- @overload fun(binaryTable:{ type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }, name:string):void
+--- @param binaryTable { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Binary bits in table representation.
 --- @param acceptNull boolean Check if it accept null.
 function TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, name, acceptNull)
     if name == nil then
@@ -720,8 +711,8 @@ function TDTModAPI_System_Bitwise_Private.AssertBinaryTable(binaryTable, name, a
 end
 
 --- Check if it is a valid bitwise type.
---- @overload fun(valueType:TheDialgaTeam.TDTModAPI.System.Bitwise.Types, name:string):void
---- @param valueType TheDialgaTeam.TDTModAPI.System.Bitwise.Types Bitwise type information.
+--- @overload fun(valueType:{ type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] }, name:string):void
+--- @param valueType { type:string, minValue:number, maxValue:number, bits:number, hasNegativeBits:boolean, value:number[] } Bitwise type information.
 --- @param acceptNull boolean Check if it accept null.
 function TDTModAPI_System_Bitwise_Private.AssertBitwiseType(valueType, name, acceptNull)
     if name == nil then

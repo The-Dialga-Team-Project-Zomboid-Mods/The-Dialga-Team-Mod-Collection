@@ -3,19 +3,17 @@
 --- @field public TDTModChatBoxAPI TheDialgaTeam.TDTModChatBoxAPI
 TheDialgaTeam = TheDialgaTeam or {};
 
--- ######################################################################################
--- Inject TDTModAPI
--- ######################################################################################
+--- ####################################################################################################################
+--- Inject TDTModAPI
+--- ####################################################################################################################
 
-if type(TheDialgaTeam.TDTModAPI) ~= "table" then
-    --- @class TheDialgaTeam.TDTModAPI
-    --- @field public Event TheDialgaTeam.TDTModAPI.Event
-    --- @field public Json TheDialgaTeam.TDTModAPI.Json
-    --- @field public Lua TheDialgaTeam.TDTModAPI.Lua
-    --- @field public PZ TheDialgaTeam.TDTModAPI.PZ
-    --- @field public System TheDialgaTeam.TDTModAPI.System
-    TheDialgaTeam.TDTModAPI = {};
-end
+--- @class TheDialgaTeam.TDTModAPI
+--- @field public Event TheDialgaTeam.TDTModAPI.Event
+--- @field public Json TheDialgaTeam.TDTModAPI.Json
+--- @field public Lua TheDialgaTeam.TDTModAPI.Lua
+--- @field public PZ TheDialgaTeam.TDTModAPI.PZ
+--- @field public System TheDialgaTeam.TDTModAPI.System
+TheDialgaTeam.TDTModAPI = {};
 
 --- @type TheDialgaTeam.TDTModAPI.Event
 TheDialgaTeam.TDTModAPI.Event = require "TheDialgaTeam/TDTModAPI/Event";

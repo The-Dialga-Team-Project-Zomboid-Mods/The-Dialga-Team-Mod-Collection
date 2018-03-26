@@ -14,6 +14,7 @@ function ChatBox:new(parent)
     o.Super = parent;
 
     o.GlobalSettings = o.Super.SettingsHandler.GlobalSettings.ChatBox;
+    o.UserSettings = o.Super.SettingsHandler.UserSettings;
 
     o.title = o.GlobalSettings.Title;
     o.borderColor = PZ.Color.ConvertToPZRGBA(o.GlobalSettings.BorderColor);
@@ -37,6 +38,45 @@ end
 
 function ChatBox:initialise()
     ISCollapsableWindow.initialise(self);
+    ChatBox.InitializeColorPicker(self);
+
+    self:addToUIManager();
+    self:setVisible(false);
+    self.pinButton:setVisible(false);
+    self.collapseButton:setVisible(false);
+
+    Events.OnKeyPressed.Add(function (key)
+        self:OnKeyPressed(key);
+    end);
+
+    Events.OnKeyKeepPressed.Add(function (key)
+        self:OnKeyPressed(key);
+    end);
+end
+
+function ChatBox:InitializeColorPicker()
+    if self.Super.SettingsHandler:CanUseColorPicker() then
+        self.ColorPicker = ISColorPicker:new(0, 0);
+        self.ColorPicker:initialise();
+        self.ColorPicker.pickedTarget = self;
+        self.ColorPicker.resetFocusTo = self.InputField;
+        self.ColorPicker.parent = self;
+        self.ColorPicker.otherFct = true;
+        self.ColorPicker:addToUIManager();
+        self.ColorPicker:setVisible(false);
+
+        self.ColorPicker.pickedFunc = function(_, color)
+            self.Super.SettingsHandler:UpdateUserFontColor(color);
+            self.InputField.javaObject:setTextColor(ColorInfo.new(color.r, color.g, color.b, 1));
+            self.InputField:focus();
+            self.ColorPicker:setVisible(false);
+        end;
+
+        self.ColorPicker.onMouseDownOutside = function ()
+            self.InputField:focus();
+            self.ColorPicker:setVisible(false);
+        end
+    end
 end
 
 function ChatBox:createChildren()
@@ -56,7 +96,15 @@ function ChatBox:InitializeTabsBar()
             tab:setFont(UIFont.Medium);
             tab:initialise();
 
-            table.insert(self.Tabs, tab);
+            if i == 1 then
+                tab.backgroundColor = tab.backgroundColorMouseOver;
+            end
+
+            tab.onclick = function ()
+                self.InputField:unfocus();
+            end;
+
+            table.insert(self.Tabs, { Name = v.name, Tab = tab });
             self:addChild(tab);
         end
     end
@@ -71,7 +119,7 @@ function ChatBox:InitializeChatMessage()
             self.ChatMessage.clip = true;
             self.ChatMessage.maxLines = 500;
             self.ChatMessage.autosetheight = false;
-            self.ChatMessage.text = "TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE> TEST <LINE>";
+            self.ChatMessage.text = "";
             self.ChatMessage:setAnchorBottom(true);
             self.ChatMessage:setAnchorRight(true);
             self.ChatMessage:setMargins(20, 5, 10, 5);
@@ -101,10 +149,16 @@ function ChatBox:InitializeInputField()
             self.InputField:setAnchorRight(true);
             self.InputField:setVisible(true);
 
-            local defaultFontColor = self.GlobalSettings.InputField.Color;
+            local defaultFontColor = self.UserSettings.FontColor;
             defaultFontColor.a = 255;
 
             self.InputField.javaObject:setTextColor(PZ.Color.ConvertToPZColorInfo(defaultFontColor));
+
+            self.InputField.onOtherKey = function(key)
+                if key == Keyboard.KEY_ESCAPE then
+                    self.InputField:unfocus();
+                end
+            end;
 
             self:addChild(self.InputField);
         end
@@ -125,8 +179,51 @@ function ChatBox:InitializeColorPickerButton()
             self.ColorPickerButton:setAnchorRight(true);
             self.ColorPickerButton:setVisible(true);
 
+            self.ColorPickerButton.onclick = function()
+                self.ColorPicker:setX(self:getX() + v.x);
+                self.ColorPicker:setY(self:getY() + v.y - (12 * 20 + 12 * 2));
+                self.ColorPicker:setVisible(true);
+                self.ColorPicker:bringToTop();
+            end;
+
             self:addChild(self.ColorPickerButton);
         end
+    end
+end
+
+--- ####################################################################################################################
+--- ChatBox Custom Events
+--- ####################################################################################################################
+function ChatBox:onMouseDown(x, y)
+    ISCollapsableWindow.onMouseDown(self, x, y);
+    self.InputField:unfocus();
+end
+
+function ChatBox:OnKeyPressed(key)
+    if not self.InputField.javaObject:isFocused() then
+        if key == getCore():getKey("Local Chat") then
+            self:setVisible(true);
+            self.ChatMessage:setVisible(true);
+            self.InputField:focus();
+            self.InputField:setText("");
+            self.InputField:ignoreFirstInput();
+        end
+
+        if key == getCore():getKey("Global Chat") and getServerOptions():getBoolean("GlobalChat") then
+            self:setVisible(true);
+            self.ChatMessage:setVisible(true);
+            self.InputField:focus();
+            self.InputField:setText("/all ");
+            self.InputField:ignoreFirstInput();
+        end
+    end
+end
+
+function ChatBox:OnKeyKeepPressed(key)
+    --- If tab button is hold, it should stay visible.
+    if key == 15 then
+        self:setVisible(true);
+        self.ChatMessage:setVisible(true);
     end
 end
 

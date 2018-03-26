@@ -29,19 +29,18 @@ end
 
 function Main.OnTick()
     if Main.SettingsHandler.RequestSettingsFromServer then
+        Main.LuaNetHandler:RequestUserSettings();
         Main.LuaNetHandler:RequestGlobalSettings();
         Main.SettingsHandler.RequestSettingsFromServer = false;
     end
+
+    Events.OnTick.Remove(Main.OnTick);
 end
 
 function Main.InitializeChatBox()
     if Main.SettingsHandler.GlobalSettings.ChatBox.Enabled then
         Main.ChatBox = ChatBox:new(Main);
         Main.ChatBox:initialise();
-        Main.ChatBox:addToUIManager();
-        Main.ChatBox:setVisible(true);
-        Main.ChatBox.pinButton:setVisible(false);
-        Main.ChatBox.collapseButton:setVisible(false);
     else
         ISChat.createChat();
     end

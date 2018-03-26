@@ -1,6 +1,12 @@
 --- @type TheDialgaTeam.TDTModAPI.PZ
 local PZ = TheDialgaTeam.TDTModAPI.PZ;
 
+--- @type TheDialgaTeam.TDTModAPI.System.Bitwise
+local Bitwise = TheDialgaTeam.TDTModAPI.System.Bitwise;
+
+--- @type TheDialgaTeam.TDTModChatBoxAPI.ColorPicker
+local ColorPicker = TheDialgaTeam.TDTModChatBoxAPI.ColorPicker;
+
 --- @class TheDialgaTeam.TDTModChatBoxAPI.Client.ChatBoxAPI.SettingsHandler
 local SettingsHandler = {};
 
@@ -27,6 +33,29 @@ function SettingsHandler.new(parent)
         self.UserSettings = settings;
     end
 
+    function self:UpdateUserFontColor(color)
+        print "[TDTModChatBoxAPI:SettingsHandler] Update font color change in server.";
+        self.Super.LuaNetHandler:SendToServer("UpdateUserFontColor", { playerId = getPlayer():getOnlineID(), color = PZ.Color.ConvertToRGB(color) });
+    end
+
+    function self:CanUseColorPicker()
+        local currentPermission = ColorPicker.PermissionFlags.Users;
+
+        if isAdmin() then
+            currentPermission = Bitwise.Or(currentPermission, ColorPicker.PermissionFlags.Admins);
+        end
+
+        if self.UserSettings.ColorPickerPermission then
+            currentPermission = Bitwise.Or(currentPermission, ColorPicker.PermissionFlags.WhitelistOnly);
+        end
+
+        if Bitwise.And(self.GlobalSettings.ChatBox.ColorPicker.Permission.Use, currentPermission) ~= 0 then
+            return true;
+        else
+            return false;
+        end
+    end
+
     function self:GetChatBoxDimensions()
         local currentX = 0;
         local currentY = 16;
@@ -40,10 +69,24 @@ function SettingsHandler.new(parent)
             maxWidth = maxWidth + 2;
             maxHeight = maxHeight + 2;
 
-            for i, v in ipairs(self.GlobalSettings.ChatBox.Tabs.Categories) do
-                local tab = {};
+            local tab = {};
 
-                if v.Name == "Default" or v.Enabled then
+            tab.type = "TabButton";
+            tab.name = "All";
+            tab.width = getTextManager():MeasureStringX(UIFont.Medium, "All") + 10;
+            tab.height = getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 4;
+            tab.x = currentX;
+            tab.y = currentY;
+
+            currentX = currentX + tab.width + 2;
+            maxWidth = maxWidth + tab.width + 2;
+
+            table.insert(tabs, tab);
+
+            for i, v in ipairs(self.GlobalSettings.ChatBox.Tabs.Categories) do
+                tab = {};
+
+                if v.Enabled then
                     tab.type = "TabButton";
                     tab.name = v.Name;
                     tab.width = getTextManager():MeasureStringX(UIFont.Medium, v.Name) + 10;
@@ -76,7 +119,7 @@ function SettingsHandler.new(parent)
         local inputField = { type = "InputField", x = currentX, y = currentY, width = maxWidth - 4, height = getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 10 }
         local colorPicker = {};
 
-        if self.GlobalSettings.ChatBox.ColorPicker.Enabled then
+        if self.GlobalSettings.ChatBox.ColorPicker.Enabled and self:CanUseColorPicker() then
             inputField.width = inputField.width - inputField.height - 4;
             currentX = currentX + inputField.width + 2;
 
