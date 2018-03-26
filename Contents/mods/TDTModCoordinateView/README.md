@@ -2,7 +2,7 @@
 This mod show coordinate in game.
 
 # Requirements
-No Requirements.
+This mod do not have requirements.
 
 # Credits & Disclaimer
 This mod is a fix for [CoordinateView(Mist)](http://steamcommunity.com/sharedfiles/filedetails/?id=961869938). <br />
