@@ -1,0 +1,15 @@
+version=1
+id=1309012046
+title=The Dialga Team Mod Collection
+description=This is a collection of all the mods created by the author.
+description=Warning: May update frequently due to the nature of combining all the mods.
+description=
+description=This mod is open sourced. Feel free to take a look and make a pull request for any bug fixes.
+description=https://github.com/The-Dialga-Team-Project-Zomboid-Mods/The-Dialga-Team-Mod-Collection
+description=
+description=This mod is tested and dedicated to Newdawn Server (pz.aggressivegaming.org)
+description=Required Version: Version 38.30
+description=
+description=See README.md for more info.
+tags=
+visibility=public
