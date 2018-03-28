@@ -410,21 +410,21 @@ function TDTModAPI_System_String.new(value)
     --- @return string The string that remains after all white-space characters are removed from the start and end of the current string.
     --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
     function self:Trim()
-        return string.gsub("^%s*(.-)%s*$", "%1");
+        return string.gsub(self.__Value, "^%s*(.-)%s*$", "%1");
     end
 
     --- Removes all trailing occurrences of a set of characters specified in an array from the current string object.
     --- @return string The string that remains after all white-space characters are removed from the end of the current string.
     --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
     function self:TrimEnd()
-        return string.gsub("^(.-)%s*$", "%1");
+        return string.gsub(self.__Value,"^(.-)%s*$", "%1");
     end
 
     --- Removes all trailing occurrences of a set of characters specified in an array from the current string object.
     --- @return string The string that remains after all white-space characters are removed from the start of the current string.
     --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
     function self:TrimStart()
-        return string.gsub("^%s*(.-)$", "%1");
+        return string.gsub(self.__Value,"^%s*(.-)$", "%1");
     end
 
     return self;

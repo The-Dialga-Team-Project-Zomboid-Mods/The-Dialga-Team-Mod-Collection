@@ -2,61 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7f769e8-0769-4909-ab08-9be835fde6cb" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/The Dialga Team Mod Collection.iml" afterPath="$PROJECT_DIR$/The Dialga Team Mod Collection.iml" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/LICENSE" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/!TheDialgaTeam_TDTModAPI.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Event.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Json.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Json/Plugin.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Lua.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Lua/Assert.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Lua/Table.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ/Color.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ/LuaNetHandler.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Bitwise.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/IO.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/IO/File.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Math.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Object.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Random.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/String.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/mod.info" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModAPI/poster.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/LICENSE" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI.disabledlua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/LuaNetHandler.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/SettingsHandler.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/CommandHandler.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/LegacyChatBoxAPI.disabledlua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/Main.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/LuaNetHandler.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/Main.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/lua/shared/!TheDialgaTeam_TDTModChatBoxAPI.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/media/ui/TheDialgaTeam/TDTModChatBoxAPI/color_swatch.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/mod.info" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModChatBoxAPI/poster.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModCoordinateView/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModCoordinateView/LICENSE" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModCoordinateView/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModCoordinateView/media/lua/client/TheDialgaTeam/TDTModCoordinateView/CoordinateViewer.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModCoordinateView/mod.info" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModCoordinateView/poster.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModSkillsCap/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModSkillsCap/LICENSE" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModSkillsCap/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModSkillsCap/media/lua/client/TheDialgaTeam/TDTModSkillsCap/SkillsCapClient.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModSkillsCap/media/lua/server/TheDialgaTeam/TDTModSkillsCap/SkillsCapServer.lua" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModSkillsCap/mod.info" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mods/TDTModSkillsCap/poster.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ/LuaNetHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ/LuaNetHandler.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/String.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/String.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/LuaNetHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/LuaNetHandler.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/SettingsHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/SettingsHandler.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/Main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/Main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/LuaNetHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/LuaNetHandler.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/shared/!TheDialgaTeam_TDTModChatBoxAPI.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/shared/!TheDialgaTeam_TDTModChatBoxAPI.lua" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,15 +21,37 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="The Dialga Team Mod Collection" />
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>selectedPlayer</find>
+      <find>ISChat</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ/LuaNetHandler.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI.disabledlua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/String.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/LuaNetHandler.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/Settings/TDTModChatBoxAPI.json" />
+        <option value="C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/OptionScreens/ISScoreboard.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/Main.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/shared/!TheDialgaTeam_TDTModChatBoxAPI.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/LuaNetHandler.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua" />
+        <option value="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/SettingsHandler.lua" />
+      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -90,50 +67,18 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="273" />
-    <option name="y" value="33" />
-    <option name="width" value="1579" />
-    <option name="height" value="992" />
+    <option name="x" value="271" />
+    <option name="y" value="31" />
+    <option name="width" value="1580" />
+    <option name="height" value="994" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
+      <showMembers ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="58d84e3e:PackageViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -145,17 +90,227 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="OptionScreens" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="ChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="ChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="lua" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
+              <item name="Contents" type="462c0819:PsiDirectoryNode" />
+              <item name="mods" type="462c0819:PsiDirectoryNode" />
+              <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
+              <item name="Settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="The Dialga Team Mod Collection" type="58d84e3e:PackageViewProjectNode" />
+              <item name="The Dialga Team Mod Collection" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -171,29 +326,12 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" />
@@ -203,24 +341,13 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
-      <envs />
       <patterns />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
@@ -233,17 +360,21 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
@@ -261,9 +392,6 @@
       <option name="showConsole" value="true" />
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -274,43 +402,48 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522089525420</updated>
-      <workItem from="1522089526845" duration="291000" />
+      <workItem from="1522089526845" duration="311000" />
+      <workItem from="1522132130595" duration="29883000" />
+      <workItem from="1522234026978" duration="118000" />
+      <workItem from="1522234906492" duration="2798000" />
+      <workItem from="1522237879626" duration="20538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291000" />
+    <option name="totallyTimeSpent" value="53648000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="LuaCheck" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="LuaCheck" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48311308" visible="true" weight="0.26442954" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="5" sideWeight="0.51688695" side_tool="true" visible="true" weight="0.26442954" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="6" sideWeight="0.50883394" side_tool="true" weight="0.25349087" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,47 +453,237 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI.disabledlua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="4437">
+          <caret line="261" column="36" selection-start-line="261" selection-start-column="20" selection-end-line="261" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/Project Zomboid Lua.iml">
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1853">
+          <caret line="109" column="57" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/SettingsHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/SettingsHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8131">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-8131" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/!TheDialgaTeam_TDTModAPI.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/The Dialga Team Mod Collection.iml">
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Object.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/shared/Util/LuaNet.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="357">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/CommandHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1260" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Lua/Table.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ/LuaNetHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="111" column="35" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Bitwise.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1848">
+          <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_PLUGINS_DIR$/EmmyLua/lib/EmmyLua-1.2.3.jar!/std/string.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="162" column="16" selection-start-line="162" selection-start-column="16" selection-end-line="162" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/String.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-508">
+          <caret line="347" column="14" lean-forward="true" selection-start-line="347" selection-start-column="14" selection-end-line="347" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/PZ/Color.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="76" column="28" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/ISUI/ISUIElement.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="227" column="21" selection-start-line="227" selection-start-column="21" selection-end-line="227" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/ISUI/ISPanel.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/ISUI/ISScrollBar.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2033">
+          <caret line="59" column="30" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/Main.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/ISUI/ISRichTextPanel.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="340" column="21" selection-start-line="340" selection-start-column="21" selection-end-line="340" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/ISUI/ISButton.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="294" column="11" selection-start-line="294" selection-start-column="11" selection-end-line="294" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI.disabledlua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="598" column="8" lean-forward="true" selection-start-line="598" selection-start-column="8" selection-end-line="598" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/Settings/TDTModChatBoxAPI.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="102" column="7" lean-forward="true" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/OptionScreens/CoopOptionsScreen.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5253" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/OptionScreens/ISScoreboard.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="138" column="3" lean-forward="true" selection-start-line="74" selection-end-line="138" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid/media/lua/client/ISUI/ISChat.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="31" lean-forward="true" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3094">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/LuaNetHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/Main.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+          <folding>
+            <element signature="e#1756#3042#0" />
+            <element signature="e#3093#6690#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="321" column="57" lean-forward="true" selection-start-line="321" selection-start-column="57" selection-end-line="321" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/shared/!TheDialgaTeam_TDTModChatBoxAPI.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="89" column="49" lean-forward="true" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/SettingsHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/LuaNetHandler.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="34" column="110" lean-forward="true" selection-start-line="34" selection-start-column="110" selection-end-line="34" selection-end-column="110" />
         </state>
       </provider>
     </entry>

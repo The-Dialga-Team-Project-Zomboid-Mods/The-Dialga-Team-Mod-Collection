@@ -7,6 +7,9 @@ local Bitwise = TheDialgaTeam.TDTModAPI.System.Bitwise;
 --- @type TheDialgaTeam.TDTModChatBoxAPI.ColorPicker
 local ColorPicker = TheDialgaTeam.TDTModChatBoxAPI.ColorPicker;
 
+--- @type TheDialgaTeam.TDTModChatBoxAPI.LuaNetHandler.PackageTypes
+local PackageTypes = TheDialgaTeam.TDTModChatBoxAPI.LuaNetHandler.PackageTypes;
+
 --- @class TheDialgaTeam.TDTModChatBoxAPI.Client.ChatBoxAPI.SettingsHandler
 local SettingsHandler = {};
 
@@ -20,22 +23,42 @@ function SettingsHandler.new(parent)
     self.Super = parent;
 
     self.RequestSettingsFromServer = true;
-    self.GlobalSettings = {};
-    self.UserSettings = {};
 
-    function self:ApplyGlobalSettings(settings)
-        print "[TDTModChatBoxAPI:SettingsHandler] Apply global settings.";
+    self.GlobalSettings = false;
+    self.UserSettings = false;
+
+    function self:GetGlobalSettings()
+        if not self.GlobalSettings then
+            self.Super.LuaNetHandler:SendToServer(PackageTypes.GlobalSettings, { playerId = getPlayer():getOnlineID() });
+            return nil;
+        else
+            return self.GlobalSettings;
+        end
+    end
+
+    function self:SetGlobalSettings(settings)
         self.GlobalSettings = settings;
     end
 
-    function self:ApplyUserSettings(settings)
-        print "[TDTModChatBoxAPI:SettingsHandler] Apply user settings.";
+    function self:GetUserSettings()
+        if not self.UserSettings then
+            self.Super.LuaNetHandler:SendToServer(PackageTypes.UserSettings, { playerId = getPlayer():getOnlineID(), steamId = getSteamIDFromUsername(getPlayer():getUsername()) });
+            return nil;
+        else
+            return self.UserSettings;
+        end
+    end
+
+    function self:SetUserSettings(settings)
         self.UserSettings = settings;
     end
 
-    function self:UpdateUserFontColor(color)
-        print "[TDTModChatBoxAPI:SettingsHandler] Update font color change in server.";
-        self.Super.LuaNetHandler:SendToServer("UpdateUserFontColor", { playerId = getPlayer():getOnlineID(), color = PZ.Color.ConvertToRGB(color) });
+    function self:SetUserFontColor(color)
+        self.Super.LuaNetHandler:SendToServer(PackageTypes.UserFontColor, { playerId = getPlayer():getOnlineID(), steamId = getSteamIDFromUsername(getPlayer():getUsername()), isGlobal = false, value = PZ.Color.ConvertToRGB(color) });
+    end
+
+    function self:ReloadServerSettings()
+        self.Super.LuaNetHandler:SendToServer(PackageTypes.ReloadServerSettings, { playerId = getPlayer():getOnlineID() });
     end
 
     function self:CanUseColorPicker()
@@ -63,21 +86,22 @@ function SettingsHandler.new(parent)
         local maxHeight = 16;
         local tabs = {};
 
+        currentX = currentX + 2;
+        currentY = currentY + 2;
+        maxWidth = maxWidth + 2;
+        maxHeight = maxHeight + 2;
+
+        local tab = {};
+
+        tab.type = "TabButton";
+        tab.name = "All";
+        tab.enabled = self.GlobalSettings.ChatBox.Tabs.Enabled;
+        tab.width = getTextManager():MeasureStringX(UIFont.Medium, "All") + 10;
+        tab.height = getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 4;
+        tab.x = currentX;
+        tab.y = currentY;
+
         if self.GlobalSettings.ChatBox.Tabs.Enabled then
-            currentX = currentX + 2;
-            currentY = currentY + 2;
-            maxWidth = maxWidth + 2;
-            maxHeight = maxHeight + 2;
-
-            local tab = {};
-
-            tab.type = "TabButton";
-            tab.name = "All";
-            tab.width = getTextManager():MeasureStringX(UIFont.Medium, "All") + 10;
-            tab.height = getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 4;
-            tab.x = currentX;
-            tab.y = currentY;
-
             currentX = currentX + tab.width + 2;
             maxWidth = maxWidth + tab.width + 2;
 
@@ -89,6 +113,7 @@ function SettingsHandler.new(parent)
                 if v.Enabled then
                     tab.type = "TabButton";
                     tab.name = v.Name;
+                    tab.enabled = true;
                     tab.width = getTextManager():MeasureStringX(UIFont.Medium, v.Name) + 10;
                     tab.height = getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 4;
                     tab.x = currentX;
@@ -103,8 +128,12 @@ function SettingsHandler.new(parent)
 
             currentY = currentY + getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 4;
             maxHeight = maxHeight + getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight() + 4;
-            currentX = 0;
+        else
+            currentY = currentY - 2;
+            maxHeight = maxHeight - 2;
         end
+
+        currentX = 0;
 
         if maxWidth < 500 then
             maxWidth = 500;

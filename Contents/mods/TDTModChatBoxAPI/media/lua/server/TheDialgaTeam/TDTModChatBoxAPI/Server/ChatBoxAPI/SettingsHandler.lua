@@ -1,11 +1,11 @@
---- @type TheDialgaTeam.TDTModAPI.System.IO.File
-local File = TheDialgaTeam.TDTModAPI.System.IO.File;
-
 --- @type TheDialgaTeam.TDTModAPI.Json
 local Json = TheDialgaTeam.TDTModAPI.Json;
 
 --- @type TheDialgaTeam.TDTModAPI.Lua.Table
 local Table = TheDialgaTeam.TDTModAPI.Lua.Table;
+
+--- @type TheDialgaTeam.TDTModAPI.System.IO.File
+local File = TheDialgaTeam.TDTModAPI.System.IO.File;
 
 --- @class TheDialgaTeam.TDTModChatBoxAPI.Server.ChatBoxAPI.SettingsHandler
 local SettingsHandler = {};
@@ -22,8 +22,6 @@ function SettingsHandler.new(parent)
     self.Settings = {};
 
     function self:LoadSettings()
-        print "[TDTModChatBoxAPI:SettingsHandler] Load Settings.";
-
         self.Settings = Json.Deserialize(File.ReadAllText("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json"));
 
         if type(self.Settings) ~= "table" then
@@ -53,11 +51,11 @@ function SettingsHandler.new(parent)
             self.Settings.Global.ChatBox.ServerMessage.DisplayTime = 5;
 
             self.Settings.Global.ChatBox.ServerMessage.Color = { r = 255, g = 25.5, b = 25.5, a = 255 };
-            self.Settings.Global.ChatBox.ServerMessage.Prefix = "SERVER : ";
+            self.Settings.Global.ChatBox.ServerMessage.Prefix = "SERVER: ";
             self.Settings.Global.ChatBox.ServerMessage.Suffix = "";
 
             self.Settings.Global.ChatBox.ServerMessage.Permission = {};
-            self.Settings.Global.ChatBox.ServerMessage.Permission.Send = TheDialgaTeam.TDTModChatBoxAPI.ServerMessage.PermissionFlags.Admin;
+            self.Settings.Global.ChatBox.ServerMessage.Permission.Send = TheDialgaTeam.TDTModChatBoxAPI.ServerMessage.PermissionFlags.Everyone;
 
             --- ########################################################################################################
             --- Global Chatbox Tabs settings.
@@ -134,7 +132,7 @@ function SettingsHandler.new(parent)
             self.Settings.Users.Character = {};
         end
 
-        File.WriteAllText("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json", Json.Serialize(self.Settings, Json.Options.Pretty));
+        self:SaveSettings();
     end
 
     function self:SaveSettings()
@@ -161,8 +159,6 @@ function SettingsHandler.new(parent)
 
         local newSteamUser = {
             SteamID = steamId,
-            IsMuted = false,
-            ColorPickerPermission = false
         };
 
         table.insert(self.Settings.Users.Steam, newSteamUser);
@@ -178,22 +174,65 @@ function SettingsHandler.new(parent)
             end
         end
 
-        local newCharacerUser = {
+        local newCharacterUser = {
             Username = username,
             IsMuted = false,
-            NameColor = self.Settings.Global.ChatBox.MessageBox.NameColor,
-            FontColor = self.Settings.Global.ChatBox.InputField.Color
+            NameColor = false,
+            FontColor = false,
+            ColorPickerPermission = false,
         }
 
-        table.insert(self.Settings.Users.Character, newCharacerUser);
+        table.insert(self.Settings.Users.Character, newCharacterUser);
         self:SaveSettings();
 
-        return newCharacerUser;
+        return newCharacterUser;
     end
 
-    function self:ApplyUserFontColor(username, color)
-        local userSettings = self:GetCharacterUserSettings(username);
-        userSettings.FontColor = color;
+    function self:SetUserIsMuted(steamId, username, global, value)
+        if global then
+            local settings = self:GetSteamUserSettings(steamId);
+            settings.IsMuted = value;
+        else
+            local settings = self:GetCharacterUserSettings(username);
+            settings.IsMuted = value;
+        end
+
+        self:SaveSettings();
+    end
+
+    function self:SetUserNameColor(steamId, username, global, value)
+        if global then
+            local settings = self:GetSteamUserSettings(steamId);
+            settings.NameColor = value;
+        else
+            local settings = self:GetCharacterUserSettings(username);
+            settings.NameColor = value;
+        end
+
+        self:SaveSettings();
+    end
+
+    function self:SetUserFontColor(steamId, username, global, value)
+        if global then
+            local settings = self:GetSteamUserSettings(steamId);
+            settings.FontColor = value;
+        else
+            local settings = self:GetCharacterUserSettings(username);
+            settings.FontColor = value;
+        end
+
+        self:SaveSettings();
+    end
+
+    function self:SetUserColorPickerPermission(steamId, username, global, value)
+        if global then
+            local settings = self:GetSteamUserSettings(steamId);
+            settings.ColorPickerPermission = value;
+        else
+            local settings = self:GetCharacterUserSettings(username);
+            settings.ColorPickerPermission = value;
+        end
+
         self:SaveSettings();
     end
 

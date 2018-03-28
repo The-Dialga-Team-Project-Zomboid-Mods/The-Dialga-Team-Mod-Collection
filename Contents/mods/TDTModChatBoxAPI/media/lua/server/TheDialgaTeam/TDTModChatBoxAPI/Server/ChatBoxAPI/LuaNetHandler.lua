@@ -1,3 +1,6 @@
+--- @type TheDialgaTeam.TDTModChatBoxAPI.LuaNetHandler.PackageTypes
+local PackageTypes = TheDialgaTeam.TDTModChatBoxAPI.LuaNetHandler.PackageTypes;
+
 --- @class TheDialgaTeam.TDTModChatBoxAPI.Server.ChatBoxAPI.LuaNetHandler
 local LuaNetHandler = {};
 
@@ -10,19 +13,26 @@ function LuaNetHandler.new(parent)
     --- @type TheDialgaTeam.TDTModChatBoxAPI.Server.Main
     self.Super = parent;
 
-    function self:InitializeCommandHandler()
-        self:AddCommandHandler("GetGlobalSettings", function (_, playerId)
-            self:SendToPlayer(playerId, "InitializeGlobalSettings", self.Super.SettingsHandler:GetGlobalSettings());
+    function self:InitializePackageListener()
+        self:AddPackageListener(PackageTypes.GlobalSettings, function (package)
+            self:SendToPlayer(package.playerId, PackageTypes.GlobalSettings, self.Super.SettingsHandler:GetGlobalSettings());
         end);
 
-        self:AddCommandHandler("GetUserSettings", function (_, playerTable)
-            local player = getPlayerByOnlineID(playerTable.playerId);
-
-            self:SendToPlayer(playerTable.playerId, "UpdateUserSettings", self.Super.SettingsHandler:GetUserSettings(playerTable.steamId, player:getUsername()));
+        self:AddPackageListener(PackageTypes.UserSettings, function (package)
+            self:SendToPlayer(package.playerId, PackageTypes.UserSettings, self.Super.SettingsHandler:GetUserSettings(package.steamId, getPlayerByOnlineID(package.playerId):getUsername()));
         end);
 
-        self:AddCommandHandler("UpdateUserFontColor", function (_, playerTable)
-            self.Super.SettingsHandler:ApplyUserFontColor(getPlayerByOnlineID(playerTable.playerId):getUsername(), playerTable.color);
+        self:AddPackageListener(PackageTypes.UserFontColor, function (package)
+            self.Super.SettingsHandler:SetUserFontColor(package.steamId, getPlayerByOnlineID(package.playerId):getUsername(), package.isGlobal, package.value);
+        end);
+
+        self:AddPackageListener(PackageTypes.ChatMessage, function (package)
+            self:SendToOtherPlayer(package.playerId, PackageTypes.ChatMessage, package.data);
+        end);
+
+        self:AddPackageListener(PackageTypes.ReloadServerSettings, function (package)
+            self.Super.SettingsHandler:LoadSettings();
+            self:SendToAllPlayer(PackageTypes.GlobalSettings, self.Super.SettingsHandler:GetGlobalSettings());
         end);
     end
 

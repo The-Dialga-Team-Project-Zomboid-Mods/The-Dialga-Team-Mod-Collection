@@ -23,21 +23,28 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
         print("[" .. self.ModId .. ":LuaNetHandler] Initialize LuaNetHandler.");
 
         self.LuaNet.onInitAdd(function ()
-            print("[" .. self.ModId .. ":LuaNetHandler] Initialize Command Handler.");
-            self:InitializeCommandHandler();
+            print("[" .. self.ModId .. ":LuaNetHandler] Initialize package listener.");
+            self:InitializePackageListener();
         end);
     end
 
-    --- Initialize Command Handler.
-    function self:InitializeCommandHandler()
-
+    --- Initialize package listener.
+    function self:InitializePackageListener()
     end
 
-    --- Add Command Handler into this LuaNet instance.
-    --- @param name string Command name.
-    --- @param luaFunction function Function to invoke.
-    function self:AddCommandHandler(name, luaFunction)
-        self.LuaNetModule.addCommandHandler(name, luaFunction);
+    --- Subscribe to the package type events.
+    --- @param packageType string Package type.
+    --- @param eventFunction function Function to invoke.
+    function self:AddPackageListener(packageType, eventFunction)
+        self.LuaNetModule.addCommandHandler(packageType, function (_, package)
+            if isServer() then
+                print("[" .. self.ModId .. ":LuaNetHandler] Package: " .. packageType .. " received from the client.");
+            else
+                print("[" .. self.ModId .. ":LuaNetHandler] Package: " .. packageType .. " received from the server.");
+            end
+
+            eventFunction(package);
+        end);
     end
 
     --- Send command into the server.
@@ -46,6 +53,7 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
     function self:SendToServer(command, params)
         if isClient() then
             self.LuaNetModule.send(command, params);
+            print("[" .. self.ModId .. ":LuaNetHandler] Package: " .. command .. " sent to the server.");
         end
     end
 
@@ -56,7 +64,7 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
     function self:SendToPlayer(playerId, command, params)
         if isServer() then
             if type(playerId) ~= "number" then
-                print("[" .. self.ModID .. ":LuaNetHandler] Invalid package data sent from the client.");
+                print("[" .. self.ModId .. ":LuaNetHandler] Invalid package data sent from the client.");
                 return;
             end
 
@@ -64,9 +72,9 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
 
             if player ~= nil then
                 self.LuaNetModule.sendPlayer(player, command, params);
-                print("[" .. self.ModID .. ":LuaNetHandler] Package data sent to " .. player:getUsername());
+                print("[" .. self.ModId .. ":LuaNetHandler] Package: " .. command .. " sent to " .. player:getUsername());
             else
-                print("[" .. self.ModID .. ":LuaNetHandler] Unable to find the user to send the package data.");
+                print("[" .. self.ModId .. ":LuaNetHandler] Unable to find the user to sent the package data.");
             end
         end
     end
@@ -78,7 +86,7 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
     function self:SendToOtherPlayer(playerId, command, params)
         if isServer() then
             if type(playerId) ~= "number" then
-                print("[" .. self.ModID .. ":LuaNetHandler] Invalid package data sent from the client.");
+                print("[" .. self.ModId .. ":LuaNetHandler] Invalid package data sent from the client.");
                 return;
             end
 
@@ -89,7 +97,7 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
 
                 if player:getOnlineID() ~= playerId then
                     self.LuaNetModule.sendPlayer(player, command, params);
-                    print("[" .. self.ModID .. ":LuaNetHandler] Package data sent to " .. player:getUsername());
+                    print("[" .. self.ModId .. ":LuaNetHandler] Package: " .. command .. " sent to " .. player:getUsername());
                 end
             end
         end
@@ -101,6 +109,7 @@ function TDTModAPI_PZ_LuaNetHandler.new(modId)
     function self:SendToAllPlayer(command, params)
         if isServer() then
             self.LuaNetModule.send(command, params);
+            print("[" .. self.ModId .. ":LuaNetHandler] Package: " .. command .. " sent to all players.");
         end
     end
 
