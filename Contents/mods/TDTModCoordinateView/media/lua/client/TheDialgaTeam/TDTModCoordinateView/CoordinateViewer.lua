@@ -11,11 +11,11 @@ local version = "0.7.2";
 local author = "RoboMat & Turbotutone & Mist";
 local modName = "Coordinate Viewer(Mist)";
 
-local FONT_SMALL = UIFont.Small;
+local FONT_SMALL = UIFont.Medium;
 local T_MANAGER = getTextManager();
 
 local SCREEN_X = 20;
-local SCREEN_Y = 300;
+local SCREEN_Y = 350;
 
 local flag = true;
 local floor = math.floor;

@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a7f769e8-0769-4909-ab08-9be835fde6cb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModAPI/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/!TheDialgaTeam_TDTModAPI.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/!TheDialgaTeam_TDTModAPI.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Lua/Table.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/Lua/Table.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Object.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/Object.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/String.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModAPI/media/lua/shared/TheDialgaTeam/TDTModAPI/System/String.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/ChatBox.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/LuaNetHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/client/TheDialgaTeam/TDTModChatBoxAPI/Client/ChatBoxAPI/LuaNetHandler.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/LuaNetHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/LuaNetHandler.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/server/TheDialgaTeam/TDTModChatBoxAPI/Server/ChatBoxAPI/SettingsHandler.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/shared/!TheDialgaTeam_TDTModChatBoxAPI.lua" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModChatBoxAPI/media/lua/shared/!TheDialgaTeam_TDTModChatBoxAPI.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModCoordinateView/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModCoordinateView/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModSkillsCap/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModSkillsCap/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contents/mods/TDTModSkillsCap/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Contents/mods/TDTModSkillsCap/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="a7f769e8-0769-4909-ab08-9be835fde6cb" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -183,96 +162,6 @@
               <item name="TDTModChatBoxAPI" type="462c0819:PsiDirectoryNode" />
               <item name="Client" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="lua" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="lua" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="lua" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="lua" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="lua" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="lua" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="The Dialga Team Mod Collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="The Dialga Team Mod Collection" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
-              <item name="mods" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="lua" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="TheDialgaTeam" type="462c0819:PsiDirectoryNode" />
-              <item name="TDTModSkillsCap" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -410,12 +299,12 @@
       <workItem from="1522264626959" duration="131000" />
       <workItem from="1522337997488" duration="95000" />
       <workItem from="1523037092709" duration="4129000" />
-      <workItem from="1524820741293" duration="5008000" />
+      <workItem from="1524820741293" duration="5164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63011000" />
+    <option name="totallyTimeSpent" value="63167000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -436,7 +325,7 @@
       <window_info id="Designer" order="3" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5095448" visible="true" weight="0.22147651" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Structure" order="5" sideWeight="0.4904552" side_tool="true" visible="true" weight="0.22147651" />
+      <window_info id="Structure" order="5" sideWeight="0.4904552" side_tool="true" weight="0.22147651" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="3" />
