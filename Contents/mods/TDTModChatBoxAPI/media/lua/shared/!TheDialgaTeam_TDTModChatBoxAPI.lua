@@ -6,10 +6,12 @@ TheDialgaTeam = TheDialgaTeam or {};
 --- ####################################################################################################################
 
 --- @class TheDialgaTeam.TDTModChatBoxAPI
+--- @field public ModId string
 --- @field public ServerMessage TheDialgaTeam.TDTModChatBoxAPI.ServerMessage
 --- @field public ColorPicker TheDialgaTeam.TDTModChatBoxAPI.ColorPicker
 --- @field public LuaNetHandler TheDialgaTeam.TDTModChatBoxAPI.LuaNetHandler
 TheDialgaTeam.TDTModChatBoxAPI = {};
+TheDialgaTeam.TDTModChatBoxAPI.ModId = "TDTModChatBoxAPI";
 
 --- ####################################################################################################################
 --- Inject TDTModChatBoxAPI.ServerMessage

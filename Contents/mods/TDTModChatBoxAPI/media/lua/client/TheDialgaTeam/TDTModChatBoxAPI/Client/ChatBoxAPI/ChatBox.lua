@@ -210,7 +210,7 @@ function ChatBox:InitializeInputField()
             self.InputField:setAnchorRight(true);
             self.InputField:setVisible(true);
 
-            local defaultFontColor = self.UserSettings.FontColor;
+            local defaultFontColor = self.UserSettings.FontColor or self.GlobalSettings.MessageBox.Color;
             defaultFontColor.a = 255;
 
             self.InputField.javaObject:setTextColor(PZ.Color.ConvertToPZColorInfo(defaultFontColor));

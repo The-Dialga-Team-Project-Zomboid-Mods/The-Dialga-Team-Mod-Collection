@@ -1,5 +1,5 @@
 # TDTModAPI (The Dialga Team Mod API)
-This mod contains basic modules required by all The Dialga Team mods. <br />
+This mod contains basic modules required by most of The Dialga Team mods. <br />
 If you wish to use this mod for your own mods, feel free to do so.
 
 # Requirements

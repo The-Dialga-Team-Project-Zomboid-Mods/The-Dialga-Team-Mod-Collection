@@ -39,5 +39,6 @@ luac.out
 *.x86_64
 *.hex
 
-*.json
-Global Table.txt
+# Ignore Folder
+/Contents/mods/TDTModChatBoxAPI/Settings
+/Contents/mods/TDTModSkillsCap/Settings

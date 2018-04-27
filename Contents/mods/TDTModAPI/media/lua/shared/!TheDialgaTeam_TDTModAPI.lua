@@ -8,12 +8,14 @@ TheDialgaTeam = TheDialgaTeam or {};
 --- ####################################################################################################################
 
 --- @class TheDialgaTeam.TDTModAPI
+--- @field public ModId string
 --- @field public Event TheDialgaTeam.TDTModAPI.Event
 --- @field public Json TheDialgaTeam.TDTModAPI.Json
 --- @field public Lua TheDialgaTeam.TDTModAPI.Lua
 --- @field public PZ TheDialgaTeam.TDTModAPI.PZ
 --- @field public System TheDialgaTeam.TDTModAPI.System
 TheDialgaTeam.TDTModAPI = {};
+TheDialgaTeam.TDTModAPI.ModId = "TDTModAPI";
 
 --- @type TheDialgaTeam.TDTModAPI.Event
 TheDialgaTeam.TDTModAPI.Event = require "TheDialgaTeam/TDTModAPI/Event";

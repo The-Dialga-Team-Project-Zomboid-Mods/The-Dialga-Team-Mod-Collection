@@ -22,6 +22,16 @@ function TDTModAPI_System_Object.new()
         return self.__Type;
     end
 
+    setmetatable(self, {
+        __tostring = function (table)
+            return table:ToString();
+        end,
+
+        __eq = function(obj, obj2)
+            return obj:Equals(obj2);
+        end
+    });
+
     return self;
 end
 

@@ -6,7 +6,7 @@ local LuaNetHandler = {};
 
 function LuaNetHandler.new(parent)
     --- @class TheDialgaTeam.TDTModChatBoxAPI.Client.ChatBoxAPI.LuaNetHandler.Instance : TheDialgaTeam.TDTModAPI.PZ.LuaNetHandler.Instance
-    local self = TheDialgaTeam.TDTModAPI.PZ.LuaNetHandler.new("TDTModChatBoxAPI");
+    local self = TheDialgaTeam.TDTModAPI.PZ.LuaNetHandler.new(TheDialgaTeam.TDTModChatBoxAPI.ModId);
 
     self.__Type = "TheDialgaTeam.TDTModChatBoxAPI.Client.ChatBoxAPI.LuaNetHandler";
 

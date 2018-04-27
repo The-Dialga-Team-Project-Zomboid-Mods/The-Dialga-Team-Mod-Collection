@@ -45,7 +45,7 @@ function TDTModAPI_System_String.new(value)
         end);
 
         if status then
-            return self:IndexOf(value, false) >= 1;
+            return self:IndexOf(tostring(value), false) >= 1;
         else
             print(error);
             return nil;
@@ -70,11 +70,7 @@ function TDTModAPI_System_String.new(value)
 
         if status then
             local newInstance = self.__Value;
-            local newValue = value;
-
-            if type(newValue) == "table" then
-                newValue = newValue.__Value;
-            end
+            local newValue = tostring(value);
 
             if ignoreCase or false then
                 newInstance = string.lower(newInstance);
@@ -106,11 +102,7 @@ function TDTModAPI_System_String.new(value)
 
         if status then
             local newInstance = self.__Value;
-            local newValue = value;
-
-            if type(newValue) == "table" then
-                newValue = newValue.__Value;
-            end
+            local newValue = tostring(value);
 
             if ignoreCase or false then
                 newInstance = string.lower(newInstance);
@@ -148,14 +140,10 @@ function TDTModAPI_System_String.new(value)
 
         if status then
             local newInstance = self.__Value;
-            local newValue = value;
+            local newValue = tostring(value);
             local newStartIndex = startIndex;
             local newCount = count;
             local newIgnoreCase = ignoreCase;
-
-            if type(value) == "table" then
-                newValue = value.__Value;
-            end
 
             if type(newStartIndex) == "boolean" then
                 newStartIndex = 1;
@@ -165,10 +153,10 @@ function TDTModAPI_System_String.new(value)
             end
 
             if type(count) == "boolean" then
-                newCount = newValue:len();
+                newCount = string.len(newValue);
                 newIgnoreCase = count;
             elseif newCount == nil then
-                newCount = newValue:len();
+                newCount = string.len(newValue)
             end
 
             if type(ignoreCase) == "boolean" then
@@ -176,21 +164,21 @@ function TDTModAPI_System_String.new(value)
             end
 
             if ignoreCase or false then
-                newInstance = newInstance:lower();
-                newValue = newValue:lower();
+                newInstance = string.lower(newInstance);
+                newValue = string.lower(newValue);
             end
 
             for i = newStartIndex, newStartIndex + newCount - 1 do
-                if i + newValue:len() - 1 > newInstance:len() then
+                if i + string.len(newValue) - 1 > string.len(newInstance) then
                     break;
                 end
 
-                if newValue:len() > newCount then
-                    if newInstance:sub(i, i + newCount - 1) == newValue then
+                if string.len(newValue) > newCount then
+                    if string.sub(newInstance, i, i + newCount - 1) == newValue then
                         return i;
                     end
                 else
-                    if newInstance:sub(i, i + newValue:len() - 1) == newValue then
+                    if string.sub(newInstance, i, i + newValue:len() - 1) == newValue then
                         return i;
                     end
                 end
@@ -208,7 +196,7 @@ function TDTModAPI_System_String.new(value)
     --- Returns a new string in which a specified string is inserted at a specified index position in this instance.
     --- @param startIndex number The one-based index position of the insertion.
     --- @param value string | TheDialgaTeam.TDTModAPI.System.String.Instance The string to insert.
-    --- @return string A new string that is equivalent to this instance, but with value inserted at position startIndex.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance A new string that is equivalent to this instance, but with value inserted at position startIndex.
     function self:Insert(startIndex, value)
         local status, error = pcall(function ()
             if value == nil then
@@ -222,13 +210,14 @@ function TDTModAPI_System_String.new(value)
 
         if status then
             local newInstance = self.__Value;
+            local newValue = tostring(value);
 
             if startIndex > string.len(newInstance) then
-                return newInstance .. value;
+                return TDTModAPI_System_String.new(newInstance .. newValue);
             elseif startIndex == 1 then
-                return value .. newInstance;
+                return TDTModAPI_System_String.new(newValue .. newInstance);
             else
-                return string.sub(newInstance, 1, startIndex - 1) .. value .. string.sub(newInstance, startIndex);
+                return TDTModAPI_System_String.new(string.sub(newInstance, 1, startIndex - 1) .. newValue .. string.sub(newInstance, startIndex));
             end
         else
             print(error);
@@ -241,9 +230,10 @@ function TDTModAPI_System_String.new(value)
     -- LastIndexOfAny
 
     --- Returns a new string that right-aligns the characters in this instance by padding them on the left with a specified Unicode character, for a specified total length.
+    --- @overload fun(totalWidth:number):TheDialgaTeam.TDTModAPI.System.String.Instance
     --- @param totalWidth number The number of characters in the resulting string, equal to the number of original characters plus any additional padding characters.
     --- @param paddingChar string | TheDialgaTeam.TDTModAPI.System.String.Instance A Unicode padding character.
-    --- @return string A new string that is equivalent to this instance, but right-aligned and padded on the left with as many paddingChar characters as needed to create a length of totalWidth.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance A new string that is equivalent to this instance, but right-aligned and padded on the left with as many paddingChar characters as needed to create a length of totalWidth.
     --- However, if totalWidth is less than the length of this instance, the method returns a reference to the existing instance.
     --- If totalWidth is equal to the length of this instance, the method returns a new string that is identical to this instance.
     function self:PadLeft(totalWidth, paddingChar)
@@ -259,15 +249,16 @@ function TDTModAPI_System_String.new(value)
 
         if status then
             local newInstance = self.__Value;
+            local newPaddingChar = string.sub(tostring(paddingChar or " "), 1, 1);
 
             if totalWidth <= string.len(newInstance) then
-                return newInstance;
+                return TDTModAPI_System_String.new(newInstance);
             else
                 for i = 1, totalWidth - string.len(newInstance) do
-                    newInstance = " " .. newInstance;
+                    newInstance = newPaddingChar .. newInstance;
                 end
 
-                return newInstance;
+                return TDTModAPI_System_String.new(newInstance);
             end
         else
             print(error);
@@ -276,9 +267,10 @@ function TDTModAPI_System_String.new(value)
     end
 
     --- Returns a new string that left-aligns the characters in this string by padding them on the right with a specified Unicode character, for a specified total length.
+    --- @overload fun(totalWidth:number):TheDialgaTeam.TDTModAPI.System.String.Instance
     --- @param totalWidth number The number of characters in the resulting string, equal to the number of original characters plus any additional padding characters.
     --- @param paddingChar string | TheDialgaTeam.TDTModAPI.System.String.Instance A Unicode padding character.
-    --- @return string A new string that is equivalent to this instance, but left-aligned and padded on the right with as many paddingChar characters as needed to create a length of totalWidth.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance A new string that is equivalent to this instance, but left-aligned and padded on the right with as many paddingChar characters as needed to create a length of totalWidth.
     --- However, if totalWidth is less than the length of this instance, the method returns a reference to the existing instance.
     --- If totalWidth is equal to the length of this instance, the method returns a new string that is identical to this instance.
     function self:PadRight(totalWidth, paddingChar)
@@ -294,15 +286,16 @@ function TDTModAPI_System_String.new(value)
 
         if status then
             local newInstance = self.__Value;
+            local newPaddingChar = string.sub(tostring(paddingChar or " "), 1, 1);
 
             if totalWidth <= string.len(newInstance) then
-                return newInstance;
+                return TDTModAPI_System_String.new(newInstance);
             else
                 for i = 1, totalWidth - string.len(newInstance) do
-                    newInstance = newInstance .. " ";
+                    newInstance = newInstance .. newPaddingChar;
                 end
 
-                return newInstance;
+                return TDTModAPI_System_String.new(newInstance);
             end
         else
             print(error);
@@ -314,7 +307,7 @@ function TDTModAPI_System_String.new(value)
     --- @overload fun(startIndex:number):string
     --- @param startIndex number The one-based position to begin deleting characters.
     --- @param count number The number of characters to delete.
-    --- @return string A new string that is equivalent to this instance except for the removed characters.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance A new string that is equivalent to this instance except for the removed characters.
     function self:Remove(startIndex, count)
         local status, error = pcall(function ()
             Assert.AssertNumber(startIndex, "startIndex");
@@ -326,7 +319,7 @@ function TDTModAPI_System_String.new(value)
             local newString = "";
             local removeCount = 0;
 
-            for i = 1, newInstance:len() do
+            for i = 1, string.len(newInstance) do
                 if i >= startIndex then
                     removeCount = removeCount + 1;
 
@@ -338,7 +331,7 @@ function TDTModAPI_System_String.new(value)
                 end
             end
 
-            return newString;
+            return TDTModAPI_System_String.new(newString);
         else
             print(error);
             return nil;
@@ -366,11 +359,7 @@ function TDTModAPI_System_String.new(value)
 
         if status then
             local newInstance = self.__Value;
-            local newValue = value;
-
-            if type(newValue) == "table" then
-                newValue = newValue.__Value;
-            end
+            local newValue = tostring(value);
 
             if ignoreCase or false then
                 newInstance = string.lower(newInstance);
@@ -389,9 +378,9 @@ function TDTModAPI_System_String.new(value)
     -- ToCharArray
 
     --- Returns a copy of this string converted to lowercase.
-    --- @return string A string in lowercase.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance A string in lowercase.
     function self:ToLower()
-        return string.lower(self.__Value);
+        return TDTModAPI_System_String.new(string.lower(self.__Value));
     end
 
     --- Returns this instance of string; no actual conversion is performed.
@@ -401,30 +390,30 @@ function TDTModAPI_System_String.new(value)
     end
 
     --- Returns a copy of this string converted to uppercase.
-    --- @return string The uppercase equivalent of the current string.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance The uppercase equivalent of the current string.
     function self:ToUpper()
-        return string.upper(self.__Value);
+        return TDTModAPI_System_String.new(string.upper(self.__Value));
     end
 
     --- Removes all leading and trailing occurrences of a set of characters specified in an array from the current string object.
-    --- @return string The string that remains after all white-space characters are removed from the start and end of the current string.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance The string that remains after all white-space characters are removed from the start and end of the current string.
     --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
     function self:Trim()
-        return string.gsub(self.__Value, "^%s*(.-)%s*$", "%1");
+        return TDTModAPI_System_String.new(string.gsub(self.__Value, "^%s*(.-)%s*$", "%1"));
     end
 
     --- Removes all trailing occurrences of a set of characters specified in an array from the current string object.
-    --- @return string The string that remains after all white-space characters are removed from the end of the current string.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance The string that remains after all white-space characters are removed from the end of the current string.
     --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
     function self:TrimEnd()
-        return string.gsub(self.__Value,"^(.-)%s*$", "%1");
+        return TDTModAPI_System_String.new(string.gsub(self.__Value,"^(.-)%s*$", "%1"));
     end
 
     --- Removes all trailing occurrences of a set of characters specified in an array from the current string object.
-    --- @return string The string that remains after all white-space characters are removed from the start of the current string.
+    --- @return TheDialgaTeam.TDTModAPI.System.String.Instance The string that remains after all white-space characters are removed from the start of the current string.
     --- If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
     function self:TrimStart()
-        return string.gsub(self.__Value,"^%s*(.-)$", "%1");
+        return TDTModAPI_System_String.new(string.gsub(self.__Value,"^%s*(.-)$", "%1"));
     end
 
     return self;
@@ -449,13 +438,7 @@ function TDTModAPI_System_String.IsNullOrEmpty(value)
     end);
 
     if status then
-        local newValue = value;
-
-        if type(newValue) == "table" then
-            newValue = newValue.__Value;
-        end
-
-        return newValue == nil or string.len(newValue) == 0;
+        return value == nil or string.len(tostring(value)) == 0;
     else
         print(error);
         return nil;
@@ -473,11 +456,7 @@ function TDTModAPI_System_String.IsNullorWhiteSpace(value)
     end);
 
     if status then
-        local newValue = value;
-
-        if type(newValue) == "string" then
-            newValue = TDTModAPI_System_String.new(value);
-        end
+        local newValue = TDTModAPI_System_String.new(tostring(value));
 
         return TDTModAPI_System_String.IsNullOrEmpty(newValue:Trim());
     else

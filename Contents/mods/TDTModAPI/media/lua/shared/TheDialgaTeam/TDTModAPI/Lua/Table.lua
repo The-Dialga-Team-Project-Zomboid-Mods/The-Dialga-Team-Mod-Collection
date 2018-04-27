@@ -23,6 +23,10 @@ function TDTModAPI_Lua_Table.Copy(luaTable)
             end
         end
 
+        if getmetatable(luaTable) ~= nil then
+            setmetatable(newTable, getmetatable(luaTable));
+        end
+
         return newTable;
     else
         print(error);

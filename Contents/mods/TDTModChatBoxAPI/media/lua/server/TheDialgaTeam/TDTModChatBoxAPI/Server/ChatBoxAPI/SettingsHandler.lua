@@ -22,7 +22,7 @@ function SettingsHandler.new(parent)
     self.Settings = {};
 
     function self:LoadSettings()
-        self.Settings = Json.Deserialize(File.ReadAllText("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json"));
+        self.Settings = Json.Deserialize(File.ReadAllText(TheDialgaTeam.TDTModChatBoxAPI.ModId, "Settings/TDTModChatBoxAPI.json"));
 
         if type(self.Settings) ~= "table" then
             self.Settings = {};
@@ -136,7 +136,7 @@ function SettingsHandler.new(parent)
     end
 
     function self:SaveSettings()
-        File.WriteAllText("TDTModChatBoxAPI", "Settings/TDTModChatBoxAPI.json", Json.Serialize(self.Settings, Json.Options.Pretty));
+        File.WriteAllText(TheDialgaTeam.TDTModChatBoxAPI.ModId, "Settings/TDTModChatBoxAPI.json", Json.Serialize(self.Settings, Json.Options.Pretty));
     end
 
     function self:GetGlobalSettings()
