@@ -11,8 +11,8 @@ local version = "0.7.2";
 local author = "RoboMat & Turbotutone & Mist";
 local modName = "Coordinate Viewer(Mist)";
 
-local FONT_SMALL = UIFont.Medium;
-local T_MANAGER = getTextManager();
+local font = UIFont.Medium;
+local textManager = getTextManager();
 
 local SCREEN_X = 20;
 local SCREEN_Y = 350;
@@ -66,12 +66,6 @@ local function showDebugger()
 		local absX = player:getX();
 		local absY = player:getY();
 
-		-- Relative Coordinates.
-		local cellX = absX / 300;
-		local cellY = absY / 300;
-		local locX = absX % 300;
-		local locY = absY % 300;
-
 		-- Detect room.
 		local currentSquare = player:getCurrentSquare();
 		local roomTxt = "outside";
@@ -80,8 +74,7 @@ local function showDebugger()
 			local room = currentSquare:getRoom();
 			
 			if room then
-				local roomName = player:getCurrentSquare():getRoom():getName();
-				roomTxt = roomName;
+				roomTxt = player:getCurrentSquare():getRoom():getName();
 			end
 		end
 
@@ -90,59 +83,17 @@ local function showDebugger()
 			"X: " .. round(absX),
 			"Y: " .. round(absY),
 			"",
-			"",
 			"Current Room: " .. roomTxt,
-			"",
 		};
 
 		local txt;
 		for i = 1, #strings do
 			txt = strings[i];
-			T_MANAGER:DrawString(FONT_SMALL, SCREEN_X, SCREEN_Y + (i * 10), txt, 1, 1, 1, 1);
+			textManager:DrawString(font, SCREEN_X, SCREEN_Y + (i * textManager:getFontFromEnum(font):getLineHeight()), txt, 1, 1, 1, 1);
 		end
 	end
 end
-
-
----
--- @param x
--- @param y
---
-local function readTile(_x, _y)
-	mouseX, mouseY = ISCoordConversion.ToWorld(getMouseX(), getMouseY(), 0);
-	mouseX = round(mouseX);
-	mouseY = round(mouseY);
-
-	local cell = getWorld():getCell();
-	local sq = cell:getGridSquare(mouseX, mouseY, 0);
-	
-	if sq then
-		local sqModData = sq:getModData();
-
-		print("=====================================================");
-		print("MODDATA SQUARE: ", mouseX, mouseY, "Params: ", _x, _y);
-		for k, v in pairs(sqModData) do
-			print(k, v);
-		end
-		local objs = sq:getObjects();
-		local objs_size = objs:size();
-		print("OBJECTS FOUND: ", objs_size - 1, "real", objs_size)
-		if objs_size > 0 then
-			for i = 0, objs_size - 1, 1 do
-				print(" " .. tostring(i) .. "-", objs:get(i));
-				if objs:get(i):getName() then
-					print("  - ", objs:get(i):getName());
-				else
-					print("  - ", "unknown");
-				end
-			end
-		end
-		print("=====================================================");
-	end
-end
-
 
 Events.OnKeyPressed.Add(checkKey);
 Events.OnPostUIDraw.Add(showDebugger);
-
 Events.OnGameBoot.Add(initInfo);

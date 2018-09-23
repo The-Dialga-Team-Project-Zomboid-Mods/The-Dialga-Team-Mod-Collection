@@ -1,0 +1,113 @@
+{
+  "Global": {
+    "ChatBox": {
+      "BackgroundCanFade": true,
+      "BackgroundColor": {
+        "a": 204,
+        "b": 0,
+        "g": 0,
+        "r": 0
+      },
+      "BorderColor": {
+        "a": 255,
+        "b": 102,
+        "g": 102,
+        "r": 102
+      },
+      "ColorPicker": {
+        "Enabled": true,
+        "Permission": {
+          "Use": 7
+        }
+      },
+      "Enabled": true,
+      "InputField": {
+        "Color": {
+          "b": 255,
+          "g": 255,
+          "r": 255
+        }
+      },
+      "InvisibleTime": 5,
+      "MessageBox": {
+        "AdminNameColor": {
+          "b": 0,
+          "g": 0,
+          "r": 255
+        },
+        "AdminNamePrefix": "[Admin] ",
+        "AdminNameSuffix": "",
+        "ChatHistoryLines": 50,
+        "Color": {
+          "b": 255,
+          "g": 255,
+          "r": 255
+        },
+        "NameColor": {
+          "b": 255,
+          "g": 255,
+          "r": 255
+        },
+        "NamePrefix": "",
+        "NameSuffix": "",
+        "ShoutDistance": 60,
+        "TalkDistance": 30,
+        "WhisperDistance": 10
+      },
+      "ServerMessage": {
+        "Color": {
+          "a": 255,
+          "b": 25.5,
+          "g": 25.5,
+          "r": 255
+        },
+        "DisplayTime": 5,
+        "Enabled": true,
+        "Permission": {
+          "Send": "Admin"
+        },
+        "Prefix": "SERVER: ",
+        "Suffix": ""
+      },
+      "Tabs": {
+        "Categories": [
+          {
+            "Enabled": true,
+            "Name": "IC"
+          },
+          {
+            "Enabled": true,
+            "Name": "OOC"
+          }
+        ],
+        "Enabled": true
+      },
+      "Title": "ChatBox - Made by jianmingyong"
+    }
+  },
+  "Users": {
+    "Character": [
+      {
+        "FontColor": {
+          "b": 255,
+          "g": 255,
+          "r": 0
+        },
+        "IsMuted": false,
+        "NameColor": {
+          "b": 255,
+          "g": 255,
+          "r": 255
+        },
+        "Username": "jianmingyong (The Dialga Team)"
+      }
+    ],
+    "Steam": [
+      {
+        "ColorPickerPermission": false,
+        "IsMuted": false,
+        "SteamID": "76561198119937183"
+      }
+    ]
+  }
+}
